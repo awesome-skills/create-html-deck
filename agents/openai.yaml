@@ -1,0 +1,4 @@
+interface:
+  display_name: "Create HTML Deck"
+  short_description: "Build and verify browser-native presentation decks"
+  default_prompt: "Use $create-html-deck to create a polished HTML presentation that works on laptops and projectors."

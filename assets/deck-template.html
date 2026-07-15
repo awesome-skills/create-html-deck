@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HTML Deck</title>
+  <style>
+    :root {
+      --paper: #f4f0e6;
+      --ink: #171715;
+      --muted: #706b62;
+      --accent: #f35b2a;
+      --dark: #171715;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      background: #24231f;
+      color: var(--ink);
+      font-family: Inter, "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+    }
+
+    button { font: inherit; }
+
+    .stage {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .deck {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background: var(--paper);
+      box-shadow: 0 28px 90px rgb(0 0 0 / 28%);
+      transform-origin: center center;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      padding: 72px 84px 54px;
+      background: var(--paper);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 160ms ease;
+    }
+
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .slide.dark { background: var(--dark); color: var(--paper); }
+
+    .head, .foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .head { min-height: 58px; padding-top: 16px; border-top: 4px solid currentColor; }
+    .foot { min-height: 48px; padding-top: 14px; border-top: 2px solid currentColor; font-size: 20px; }
+    .eyebrow, .tag, .page { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .eyebrow { font-size: 22px; font-weight: 800; letter-spacing: .08em; }
+    .tag { padding: 7px 15px; border: 2px solid currentColor; border-radius: 999px; font-size: 19px; font-weight: 800; }
+    .body { min-height: 0; display: grid; align-content: center; padding: 36px 0 20px; }
+
+    h1, h2, p { margin: 0; }
+    h1 { max-width: 1500px; font-size: 112px; line-height: 1; letter-spacing: -.055em; text-wrap: balance; }
+    h2 { max-width: 1500px; font-size: 76px; line-height: 1.06; letter-spacing: -.04em; text-wrap: balance; }
+    .lead { max-width: 1300px; margin-top: 38px; color: var(--muted); font-size: 34px; line-height: 1.5; }
+    .dark .lead { color: #bbb6ac; }
+    .accent { color: var(--accent); }
+
+    .controls {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px;
+      border: 1px solid rgb(255 255 255 / 18%);
+      border-radius: 999px;
+      background: rgb(20 20 18 / 82%);
+    }
+
+    .controls button {
+      min-width: 44px;
+      min-height: 44px;
+      border: 0;
+      border-radius: 50%;
+      background: transparent;
+      color: white;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    .controls button:hover, .controls button:focus-visible { background: rgb(255 255 255 / 15%); outline: none; }
+    .controls button:disabled { cursor: default; opacity: .3; }
+    .counter { min-width: 72px; color: white; text-align: center; font: 800 14px/1 ui-monospace, SFMono-Regular, Menlo, monospace; }
+
+    @media (prefers-reduced-motion: reduce) { .slide { transition: none; } }
+
+    @media print {
+      html, body { overflow: visible; background: white; }
+      .stage, .deck { position: static; display: block; width: auto; height: auto; box-shadow: none; transform: none !important; }
+      .slide { position: relative; width: 1920px; height: 1080px; opacity: 1; visibility: visible; page-break-after: always; }
+      .controls { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="stage" aria-label="Presentation">
+    <section class="deck" id="deck">
+      <article class="slide dark active" data-title="Opening">
+        <header class="head">
+          <span class="eyebrow">PRESENTATION · 01</span>
+          <span class="tag">OPENING</span>
+        </header>
+        <div class="body">
+          <h1>One clear idea<br><span class="accent">per slide</span></h1>
+          <p class="lead">Replace this sample with the claim your audience should remember.</p>
+        </div>
+        <footer class="foot">
+          <span>Speaker · Date</span>
+          <span class="page">01 / 02</span>
+        </footer>
+      </article>
+
+      <article class="slide" data-title="Evidence">
+        <header class="head">
+          <span class="eyebrow">PRESENTATION · 02</span>
+          <span class="tag">EVIDENCE</span>
+        </header>
+        <div class="body">
+          <h2>Use the second slide to prove or explain the opening claim</h2>
+          <p class="lead">Add a comparison, sequence, screenshot, diagram, or concrete example.</p>
+        </div>
+        <footer class="foot">
+          <span>Keep the footer useful</span>
+          <span class="page">02 / 02</span>
+        </footer>
+      </article>
+    </section>
+  </main>
+
+  <nav class="controls" aria-label="Slide controls">
+    <button id="prev" type="button" aria-label="Previous slide">←</button>
+    <span class="counter" id="counter" aria-live="polite">1 / 2</span>
+    <button id="next" type="button" aria-label="Next slide">→</button>
+  </nav>
+
+  <script>
+    (() => {
+      const deck = document.getElementById('deck');
+      const slides = [...document.querySelectorAll('.slide')];
+      const prev = document.getElementById('prev');
+      const next = document.getElementById('next');
+      const counter = document.getElementById('counter');
+      const storageKey = `html-deck:${location.pathname}:slide`;
+      const saved = Number.parseInt(localStorage.getItem(storageKey) ?? '0', 10);
+      let current = Number.isFinite(saved) ? saved : 0;
+
+      function scaleDeck() {
+        const scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+        deck.style.transform = `translate(-50%, -50%) scale(${scale})`;
+      }
+
+      function show(index) {
+        current = Math.min(Math.max(index, 0), slides.length - 1);
+        slides.forEach((slide, slideIndex) => {
+          const active = slideIndex === current;
+          slide.classList.toggle('active', active);
+          slide.setAttribute('aria-hidden', active ? 'false' : 'true');
+        });
+        counter.textContent = `${current + 1} / ${slides.length}`;
+        prev.disabled = current === 0;
+        next.disabled = current === slides.length - 1;
+        localStorage.setItem(storageKey, String(current));
+        document.title = slides[current].dataset.title || 'HTML Deck';
+      }
+
+      prev.addEventListener('click', () => show(current - 1));
+      next.addEventListener('click', () => show(current + 1));
+      window.addEventListener('resize', scaleDeck);
+      window.addEventListener('keydown', event => {
+        if (['INPUT', 'TEXTAREA', 'SELECT', 'BUTTON'].includes(event.target.tagName)) return;
+        if (['ArrowRight', 'PageDown', ' '].includes(event.key)) { event.preventDefault(); show(current + 1); }
+        if (['ArrowLeft', 'PageUp'].includes(event.key)) { event.preventDefault(); show(current - 1); }
+        if (event.key === 'Home') { event.preventDefault(); show(0); }
+        if (event.key === 'End') { event.preventDefault(); show(slides.length - 1); }
+      });
+
+      scaleDeck();
+      show(current);
+    })();
+  </script>
+</body>
+</html>
