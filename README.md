@@ -10,7 +10,7 @@
 
 不是把长文切成几页，而是让 Agent 完成叙事、设计、实现和真实设备检查
 
-[![Agent Skill](https://img.shields.io/badge/agent_skill-create--html--deck-DCF23E?style=flat-square&labelColor=171717)](SKILL.md)
+[![Agent Skill](https://img.shields.io/badge/agent_skill-create--html--deck-DCF23E?style=flat-square&labelColor=171717)](skills/create-html-deck/SKILL.md)
 [![Output](https://img.shields.io/badge/output-HTML%20Deck-F35B2A?style=flat-square&labelColor=171717)](#交付契约)
 [![License](https://img.shields.io/badge/license-MIT-55DDE0?style=flat-square&labelColor=171717)](LICENSE)
 
@@ -70,14 +70,14 @@ Skill 会优先读取现有笔记、截图、spec、handoff 和已有 Deck；材
 - 相对路径图片资源和有意义的 `alt` 文本
 - 无控制台错误、无页面滚动条、无视口裁切
 
-新建 Deck 时可从 [`assets/deck-template.html`](assets/deck-template.html) 开始；已有 Deck 会尽量保留原来的视觉语言
+新建 Deck 时可从 [`deck-template.html`](skills/create-html-deck/assets/deck-template.html) 开始；已有 Deck 会尽量保留原来的视觉语言
 
 ## 质量门
 
 先运行便携结构检查：
 
 ```bash
-python3 scripts/check_deck.py /absolute/path/to/deck.html
+python3 skills/create-html-deck/scripts/check_deck.py /absolute/path/to/deck.html
 ```
 
 再用真实浏览器检查：
@@ -95,13 +95,14 @@ python3 scripts/check_deck.py /absolute/path/to/deck.html
 
 ```text
 .
-├── SKILL.md
 ├── README.md
-├── agents/openai.yaml
-├── assets/
-│   ├── create-html-deck-hero.png
-│   └── deck-template.html
-└── scripts/check_deck.py
+├── LICENSE
+├── assets/create-html-deck-hero.png
+└── skills/create-html-deck/
+    ├── SKILL.md
+    ├── agents/openai.yaml
+    ├── assets/deck-template.html
+    └── scripts/check_deck.py
 ```
 
 ## License
