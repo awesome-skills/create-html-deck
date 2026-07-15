@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import re
 import sys
+from collections import Counter
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urlparse
@@ -15,15 +16,36 @@ class DeckParser(HTMLParser):
     def __init__(self) -> None:
         super().__init__()
         self.slide_count = 0
-        self.image_sources: list[str] = []
+        self.html_lang = ""
+        self.has_viewport = False
+        self.has_title = False
+        self.title_depth = 0
+        self.ids: list[str] = []
+        self.images: list[tuple[str, str | None]] = []
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         values = dict(attrs)
         classes = set((values.get("class") or "").split())
+        if tag == "html":
+            self.html_lang = (values.get("lang") or "").strip()
+        elif tag == "meta" and (values.get("name") or "").lower() == "viewport":
+            self.has_viewport = bool((values.get("content") or "").strip())
+        elif tag == "title":
+            self.title_depth += 1
         if tag == "article" and "slide" in classes:
             self.slide_count += 1
         if tag == "img" and values.get("src"):
-            self.image_sources.append(values["src"] or "")
+            self.images.append((values["src"] or "", values.get("alt")))
+        if values.get("id"):
+            self.ids.append(values["id"] or "")
+
+    def handle_data(self, data: str) -> None:
+        if self.title_depth and data.strip():
+            self.has_title = True
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag == "title" and self.title_depth:
+            self.title_depth -= 1
 
 
 def local_asset_path(deck_path: Path, source: str) -> Path | None:
@@ -50,8 +72,22 @@ def main() -> int:
     parser.feed(html)
     errors: list[str] = []
 
+    if not re.search(r"<!doctype\s+html", html, flags=re.IGNORECASE):
+        errors.append("missing HTML5 doctype")
+    if not parser.html_lang:
+        errors.append("missing <html lang=\"…\">")
+    if not parser.has_viewport:
+        errors.append("missing viewport meta tag")
+    if not parser.has_title:
+        errors.append("missing non-empty <title>")
     if parser.slide_count == 0:
         errors.append("no <article class=\"slide\"> elements found")
+
+    duplicate_ids = sorted(
+        element_id for element_id, count in Counter(parser.ids).items() if count > 1
+    )
+    if duplicate_ids:
+        errors.append(f"duplicate element ids: {', '.join(duplicate_ids)}")
 
     required_patterns = {
         "1920px design width": r"width\s*:\s*1920px",
@@ -83,7 +119,9 @@ def main() -> int:
             )
 
     missing_assets: list[Path] = []
-    for source in parser.image_sources:
+    for source, alt in parser.images:
+        if alt is None:
+            errors.append(f"image missing alt attribute: {source}")
         asset_path = local_asset_path(deck_path, source)
         if asset_path is not None and not asset_path.is_file():
             missing_assets.append(asset_path)
@@ -96,11 +134,12 @@ def main() -> int:
         return 1
 
     local_assets = sum(
-        local_asset_path(deck_path, source) is not None for source in parser.image_sources
+        local_asset_path(deck_path, source) is not None for source, _ in parser.images
     )
     print(
         f"PASS: {parser.slide_count} slides; "
-        f"{len(parser.image_sources)} images ({local_assets} local); structural contract present"
+        f"{len(parser.images)} images ({local_assets} local); "
+        f"{len(parser.ids)} unique ids; structural contract present"
     )
     return 0
 
