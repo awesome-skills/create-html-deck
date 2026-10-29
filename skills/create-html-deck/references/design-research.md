@@ -26,6 +26,16 @@ Reviewed 2026-10-29. This is a design-source notebook, not a ranking or a claim 
 | [Purplin](https://github.com/moudev/slidev-theme-purplin) | README and layout/component examples | Quote/image layouts and a deliberate footer treatment | Layout reference only; no direct port or dependency |
 | [Unicorn](https://github.com/Dawntraoz/slidev-theme-unicorn) | README with light/dark layout examples; demo opened but initial content did not render in the first capture | Separate cover, section, centered-text, and image layouts vary pace within a theme | Prism explores an original centered stage and chapter transition; upstream demo not counted as visually verified |
 
+## Beyond slide engines
+
+| Source | Inspected | Useful observation | Local decision |
+|---|---|---|---|
+| [Tremor Dashboard OSS](https://github.com/tremorlabs/template-dashboard-oss) | README; linked live preview failed with a connection error | A report should separate overview and detail; README identifies Next.js/Tremor and Apache 2.0 | Inspiration shortlist only; no claim of a visually verified demo, no dashboard runtime imported |
+| [Tremor Blocks](https://github.com/tremorlabs/tremor-blocks) · [catalog](https://blocks.tremor.so/blocks) | README and official category catalog | Chart compositions, KPI cards, and tables are distinct report building blocks | Ledger includes a focused comparison and evidence table; avoids compressing an entire dashboard into one slide |
+| [Carbon](https://github.com/carbon-design-system/carbon) · [data visualization](https://www.carbondesignsystem.com/building-blocks/data-visualization/overview) | Repository README and rendered official chart overview | Charts serve a specific communication intent and need readable labels | Ledger uses a simple zero-based comparison with explicit fictional values and a source note; no Carbon assets copied |
+| [Broadsheet](https://github.com/jonajinga/broadsheet) | README and `src/assets/css/tokens.css` | Editorial hierarchy separates masthead, headlines, body, and utility labels | Dispatch uses an original publication-style cover and three-column briefing; no CMS or site infrastructure imported |
+| [Sticky](https://github.com/hamzasaleem2/sticky) | Archived repository README and board screenshot | Spatial note grouping can organize discussion; README says later development moved private | Workshop uses static observation notes and an action worksheet. It is not a port of the collaboration app. The archived code is identified as MIT by its README |
+
 ## Provenance and reuse notes
 
 - MIT license files were read for Neversink, Geist, Scholarly, Academic, Frontend Slides, and UoGSoE Marp themes. This is repository-level evidence, not a license audit of every transitive asset.

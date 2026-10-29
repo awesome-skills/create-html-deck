@@ -74,7 +74,7 @@ Skill 会优先读取现有笔记、截图、spec、handoff 和已有 Deck；材
 
 ## 模板画廊
 
-[打开本地画廊](skills/create-html-deck/assets/templates/index.html)（下载后用浏览器打开），现有 10 套，每套都有四页可播放示例，复制单个 HTML 即可开始，无需安装依赖。
+[打开本地画廊](skills/create-html-deck/assets/templates/index.html)（下载后用浏览器打开），现有 13 套，每套都有四页可播放示例，复制单个 HTML 即可开始，无需安装依赖。
 
 | 模板 | 预览 | 适合场景 |
 |---|---|---|
@@ -85,7 +85,7 @@ Skill 会优先读取现有笔记、截图、spec、handoff 和已有 Deck；材
 
 画廊支持按用途筛选、预览和下载单个 HTML。
 
-新增方向：[Blueprint · 蓝图笔记](skills/create-html-deck/assets/templates/blueprint.html)、[Seminar · 研究札记](skills/create-html-deck/assets/templates/seminar.html)、[Poster · 醒目宣言](skills/create-html-deck/assets/templates/poster.html)、[Prism · 光谱舞台](skills/create-html-deck/assets/templates/prism.html)、[Console · 开发者手记](skills/create-html-deck/assets/templates/console.html)、[Monograph · 极简展陈](skills/create-html-deck/assets/templates/monograph.html)。完整预览见画廊。
+新增方向：[Blueprint · 蓝图笔记](skills/create-html-deck/assets/templates/blueprint.html)、[Seminar · 研究札记](skills/create-html-deck/assets/templates/seminar.html)、[Poster · 醒目宣言](skills/create-html-deck/assets/templates/poster.html)、[Prism · 光谱舞台](skills/create-html-deck/assets/templates/prism.html)、[Console · 开发者手记](skills/create-html-deck/assets/templates/console.html)、[Monograph · 极简展陈](skills/create-html-deck/assets/templates/monograph.html)。另有 [Workshop · 共创现场](skills/create-html-deck/assets/templates/workshop.html)、[Ledger · 数据简报](skills/create-html-deck/assets/templates/ledger.html)、[Dispatch · 编辑部来信](skills/create-html-deck/assets/templates/dispatch.html)。完整预览见画廊。
 
 每套包含不同的封面、内容页、转场或对照页以及结尾构图；保留键盘导航、页码、等比缩放和打印。示例文案均需替换，模板中的流程与作品区域不代表真实项目证据。
 

@@ -239,7 +239,9 @@ output = 生成结果
       next.addEventListener('click', () => show(current + 1));
       window.addEventListener('resize', scaleDeck);
       window.addEventListener('keydown', event => {
-        if (['INPUT', 'TEXTAREA', 'SELECT', 'BUTTON'].includes(event.target.tagName)) return;
+        if (event.target.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT'].includes(event.target.tagName)) return;
+        // Keep native Space activation on focused buttons; arrows still navigate.
+        if (event.target.tagName === 'BUTTON' && event.key === ' ') return;
         if (['ArrowRight', 'PageDown', ' '].includes(event.key)) { event.preventDefault(); show(current + 1); }
         if (['ArrowLeft', 'PageUp'].includes(event.key)) { event.preventDefault(); show(current - 1); }
         if (event.key === 'Home') { event.preventDefault(); show(0); }

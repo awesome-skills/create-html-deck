@@ -14,8 +14,13 @@ For a new deck, choose by audience and content, then copy the selected HTML. Eac
 | `assets/templates/prism.html` | Product launches, vision talks | Centered stage, value split, chapter, closing | Dark indigo, soft light, restrained glass panels |
 | `assets/templates/console.html` | Code walkthroughs, engineering changes | Terminal cover, pseudocode, diff, verification | Monospace, amber, dark neutral surfaces |
 | `assets/templates/monograph.html` | Portfolios, brand studies, ideas | Type-led cover, exhibit, statement, closing | Black/white, generous whitespace, large type |
+| `assets/templates/workshop.html` | Workshops, retrospectives, team sessions | Sticky-note cover, observations, action worksheet, closing | Dotted board, soft yellow/blue/pink notes |
+| `assets/templates/ledger.html` | Data briefs, business reviews | Report cover, sample bar chart, evidence table, decision | Cool neutrals, blue bars, visible scope/source notes |
+| `assets/templates/dispatch.html` | Weekly updates, editorial narratives | Masthead, three columns, editorial statement, follow-up | Newsprint, serif type, double rules |
 
 Replace all sample content, including document/slide titles, headers, footers, and labels. The statement in Editorial is original sample copy, not an attributed quotation. The workflow and portfolio panels are placeholders, not evidence of real results. Replace decorative CSS art with actual project evidence when appropriate. Keep footer content clear of the fixed controls.
+
+Ledger contains explicitly fictional example values (12, 18, 24) on a zero-based 0–24 scale. When replacing them, update bar widths, tick labels, units, accessible chart description, and source text together. Workshop is a presentation layout, not a collaborative or draggable whiteboard.
 
 Customize the `:root` tokens and theme-layout CSS near the end of the style block. Duplicate or remove `<article class="slide">` sections for the story; update static footer page markers to match. The navigation counter derives its total from the slide list. Copying only the selected HTML is sufficient until you add local assets. System fonts vary across machines; recheck Chinese line breaks on the presentation device.
 

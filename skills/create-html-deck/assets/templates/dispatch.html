@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dispatch / 编辑部来信</title>
+  <style>
+    :root {
+      --paper: #f4f0e6;
+      --ink: #171715;
+      --muted: #706b62;
+      --accent: #f35b2a;
+      --dark: #171715;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      background: #24231f;
+      color: var(--ink);
+      font-family: Inter, "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+    }
+
+    button { font: inherit; }
+
+    .stage {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .deck {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background: var(--paper);
+      box-shadow: 0 28px 90px rgb(0 0 0 / 28%);
+      transform-origin: center center;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      padding: 72px 84px 54px;
+      background: var(--paper);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 160ms ease;
+    }
+
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .slide.dark { background: var(--dark); color: var(--paper); }
+
+    .head, .foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .head { min-height: 58px; padding-top: 16px; border-top: 4px solid currentColor; }
+    .foot { min-height: 48px; padding-top: 14px; border-top: 2px solid currentColor; font-size: 20px; }
+    .eyebrow, .tag, .page { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .eyebrow { font-size: 22px; font-weight: 800; letter-spacing: .08em; }
+    .tag { padding: 7px 15px; border: 2px solid currentColor; border-radius: 999px; font-size: 19px; font-weight: 800; }
+    .body { min-height: 0; display: grid; align-content: center; padding: 36px 0 20px; }
+
+    h1, h2, p { margin: 0; }
+    h1 { max-width: 1500px; font-size: 112px; line-height: 1.15; letter-spacing: -.055em; text-wrap: balance; }
+    h2 { max-width: 1500px; font-size: 76px; line-height: 1.06; letter-spacing: -.04em; text-wrap: balance; }
+    .lead { max-width: 1300px; margin-top: 38px; color: var(--muted); font-size: 34px; line-height: 1.5; }
+    .dark .lead { color: #bbb6ac; }
+    .accent { color: var(--accent); }
+
+    .controls {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px;
+      border: 1px solid rgb(255 255 255 / 18%);
+      border-radius: 999px;
+      background: rgb(20 20 18 / 82%);
+    }
+
+    .controls button {
+      min-width: 44px;
+      min-height: 44px;
+      border: 0;
+      border-radius: 50%;
+      background: transparent;
+      color: white;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    .controls button:hover, .controls button:focus-visible { background: rgb(255 255 255 / 15%); outline: none; }
+    .controls button:disabled { cursor: default; opacity: .3; }
+    .counter { min-width: 72px; color: white; text-align: center; font: 800 14px/1 ui-monospace, SFMono-Regular, Menlo, monospace; }
+
+    @media (prefers-reduced-motion: reduce) { .slide { transition: none; } }
+
+    @media print {
+      html, body { overflow: visible; background: white; }
+      .stage, .deck { position: static; display: block; width: auto; height: auto; box-shadow: none; transform: none !important; }
+      .slide { position: relative; width: 1920px; height: 1080px; opacity: 1; visibility: visible; page-break-after: always; }
+      .controls { display: none; }
+    }
+
+
+
+    :root { --paper: #f3eee2; --ink: #302c25; --accent: #8c3f2d; --muted: #6b6254; }
+    .slide { padding: 68px 84px 64px; }
+    .head { border-top: 1px solid currentColor; }
+    .tag { border: 1px solid; font-size: 20px; font-weight: 500; }
+    .foot { padding-right: 250px; font-size: 22px; border-top: 1px solid currentColor; }
+    .body { gap: 32px; padding: 38px 0; }
+    h1 { font-size: 116px; line-height: 1.15; }
+    h2 { font-size: 76px; line-height: 1.2; }
+    h3 { font-size: 38px; line-height: 1.3; margin: 0 0 20px; }
+    .lead { margin-top: 24px; max-width: 1260px; }
+    .kicker { font: 24px/1.5 ui-monospace, monospace; text-transform: uppercase; letter-spacing: .1em; }
+    .label { font: 24px/1.5 ui-monospace, monospace; }
+    .note { font-size: 26px; line-height: 1.5; color: var(--muted); }
+    .split { display: grid; grid-template-columns: 1.1fr 1fr; gap: 72px; align-items: center; }
+    .stack { display: grid; gap: 30px; }
+    .item { padding: 24px 0; border-top: 1px solid; }
+    .item p, .copy { font-size: 30px; line-height: 1.6; }
+    .triptych { display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; }
+    .triptych section { padding: 32px; }
+    .triptych h3 { margin-top: 20px; }
+    .triptych p { font-size: 28px; line-height: 1.5; }
+    .center { text-align: center; justify-items: center; }
+    .center .lead { margin-left: auto; margin-right: auto; }
+    .statement { font-size: 104px; line-height: 1.3; }
+    @page { size: 1920px 1080px; margin: 0; }
+    @media print { html,body { width: auto; height: auto; print-color-adjust: exact; -webkit-print-color-adjust: exact; } .slide { break-inside: avoid; } .slide:last-child { page-break-after: auto; } }
+
+    .head { border-top: 5px double; border-bottom: 1px solid; padding:16px 0; }.tag { border:0; padding:0; font-family:Georgia,serif; }.eyebrow { font-family:Georgia,"Songti SC",serif; font-size:30px; }
+    h1,h2,h3 { font-family:Georgia,"Songti SC",serif; font-weight:600; }h1 { font-size:120px; }
+    .masthead { font: 100px/1.1 Georgia,serif; text-align:center; border-bottom:1px solid; padding-bottom:24px; letter-spacing:-.045em; }
+    .dispatch-cover { display:grid; grid-template-columns:1.45fr .55fr; gap:70px; align-items:center; }.dispatch-cover h1 { font-size:104px; }.dispatch-cover aside { border-left:1px solid; padding-left:42px; }.dispatch-cover aside p { font-size:28px; line-height:1.6; }
+    .columns { display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px; }.columns section+section { border-left:1px solid #a99e8b;padding-left:40px; }.columns h3 { font-size:42px; }.columns p { font-size:30px;line-height:1.6; }
+    .pullquote { border-top:5px double;border-bottom:5px double;padding:44px 0;font:72px/1.4 Georgia,"Songti SC",serif; }
+    .dateline { font:24px/1.5 ui-monospace,monospace;letter-spacing:.1em; }
+  </style>
+</head>
+<body>
+  <main class="stage" aria-label="Presentation">
+    <section class="deck" id="deck">
+      <article class="slide active" data-title="Dispatch / 编辑部来信 · 编辑开场">
+        <header class="head"><span class="eyebrow">DISPATCH / 01</span><span class="tag">编辑开场</span></header>
+        <div class="body"><div class="masthead">The Weekly Dispatch</div><div class="dispatch-cover"><div><p class="dateline">VOL. 01 / 本周观察</p><h1>一周的信息，<br>一条值得追的线。</h1></div><aside><p class="kicker accent">In this issue</p><p>一个变化<br>一组证据<br>一个下一步</p></aside></div><p class="note">编辑式叙事模板 · 请替换刊名、期数与内容</p></div>
+        <footer class="foot"><span>Dispatch / 编辑部来信 · 示例内容，请替换</span><span class="page">01 / 04</span></footer>
+      </article>
+
+      <article class="slide" data-title="Dispatch / 编辑部来信 · 三栏简报">
+        <header class="head"><span class="eyebrow">DISPATCH / 02</span><span class="tag">三栏简报</span></header>
+        <div class="body"><p class="dateline">01 / What matters this week</p><h2>三条线索，读懂一件事。</h2><div class="columns"><section><p class="kicker accent">背景</p><h3>从哪里开始</h3><p>用具体事件交代这次变化发生的条件。</p></section><section><p class="kicker accent">现场</p><h3>发生了什么</h3><p>放入观察与证据，明确来源和时间。</p></section><section><p class="kicker accent">影响</p><h3>接下来怎么看</h3><p>说明影响范围，留下尚未验证的问题。</p></section></div></div>
+        <footer class="foot"><span>Dispatch / 编辑部来信 · 示例内容，请替换</span><span class="page">02 / 04</span></footer>
+      </article>
+
+      <article class="slide" data-title="Dispatch / 编辑部来信 · 中心判断">
+        <header class="head"><span class="eyebrow">DISPATCH / 03</span><span class="tag">中心判断</span></header>
+        <div class="body"><p class="dateline">02 / The editorial note</p><p class="pullquote">把事实排好，<br>观点才有站立的地方。</p><p class="note">原创示例文案，非外部引文。替换为你的中心判断或真实引用。</p></div>
+        <footer class="foot"><span>Dispatch / 编辑部来信 · 示例内容，请替换</span><span class="page">03 / 04</span></footer>
+      </article>
+
+      <article class="slide" data-title="Dispatch / 编辑部来信 · 下期追踪">
+        <header class="head"><span class="eyebrow">DISPATCH / 04</span><span class="tag">下期追踪</span></header>
+        <div class="body"><p class="dateline">To be continued / 下期继续</p><h1>这条线索，<br>值得继续追。</h1><p class="lead">写下接下来要观察的变化，<br>以及什么新证据会改变你的判断。</p></div>
+        <footer class="foot"><span>Dispatch / 编辑部来信 · 示例内容，请替换</span><span class="page">04 / 04</span></footer>
+      </article>
+    </section>
+  </main>
+
+  <nav class="controls" aria-label="Slide controls">
+    <button id="prev" type="button" aria-label="Previous slide">←</button>
+    <span class="counter" id="counter" aria-live="polite">1 / 4</span>
+    <button id="next" type="button" aria-label="Next slide">→</button>
+  </nav>
+
+  <script>
+    (() => {
+      const deck = document.getElementById('deck');
+      const slides = [...document.querySelectorAll('.slide')];
+      const prev = document.getElementById('prev');
+      const next = document.getElementById('next');
+      const counter = document.getElementById('counter');
+      const storageKey = `html-deck:${location.pathname}:slide`;
+      let saved = 0;
+      try { saved = Number.parseInt(localStorage.getItem(storageKey) ?? '0', 10); } catch { /* Storage may be unavailable for local files. */ }
+      let current = Number.isFinite(saved) ? saved : 0;
+
+      function scaleDeck() {
+        const scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+        deck.style.transform = `translate(-50%, -50%) scale(${scale})`;
+      }
+
+      function show(index) {
+        current = Math.min(Math.max(index, 0), slides.length - 1);
+        slides.forEach((slide, slideIndex) => {
+          const active = slideIndex === current;
+          slide.classList.toggle('active', active);
+          slide.setAttribute('aria-hidden', active ? 'false' : 'true');
+          slide.inert = !active;
+        });
+        counter.textContent = `${current + 1} / ${slides.length}`;
+        prev.disabled = current === 0;
+        next.disabled = current === slides.length - 1;
+        try { localStorage.setItem(storageKey, String(current)); } catch { /* Navigation still works without persistence. */ }
+        document.title = slides[current].dataset.title || 'HTML Deck';
+      }
+
+      prev.addEventListener('click', () => show(current - 1));
+      next.addEventListener('click', () => show(current + 1));
+      window.addEventListener('resize', scaleDeck);
+      window.addEventListener('keydown', event => {
+        if (event.target.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT'].includes(event.target.tagName)) return;
+        // Keep native Space activation on focused buttons; arrows still navigate.
+        if (event.target.tagName === 'BUTTON' && event.key === ' ') return;
+        if (['ArrowRight', 'PageDown', ' '].includes(event.key)) { event.preventDefault(); show(current + 1); }
+        if (['ArrowLeft', 'PageUp'].includes(event.key)) { event.preventDefault(); show(current - 1); }
+        if (event.key === 'Home') { event.preventDefault(); show(0); }
+        if (event.key === 'End') { event.preventDefault(); show(slides.length - 1); }
+      });
+
+      scaleDeck();
+      show(current);
+    })();
+  </script>
+</body>
+</html>

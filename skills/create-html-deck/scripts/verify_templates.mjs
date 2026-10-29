@@ -64,6 +64,9 @@ export async function verifyTemplates(task, { baseURL, slugs, outputDir, preview
       if (await page.evaluate(() => document.getElementById('counter').textContent) !== `1 / ${count}`) throw new Error(`${slug}: start boundary`);
       await page.click('#next');
       if (await page.evaluate(() => document.getElementById('counter').textContent) !== `2 / ${count}`) throw new Error(`${slug}: next button`);
+      await page.keyboard.press('ArrowLeft');
+      if (await page.evaluate(() => document.getElementById('counter').textContent) !== `1 / ${count}`) throw new Error(`${slug}: keyboard after click`);
+      await page.keyboard.press('ArrowRight');
       await page.click('#prev');
       await page.cdp('Emulation.setEmulatedMedia', { media: 'print' });
       if (!await page.evaluate(() => [...document.querySelectorAll('.slide')].every(s => getComputedStyle(s).visibility === 'visible'))) throw new Error(`${slug}: print visibility`);
