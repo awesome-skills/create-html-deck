@@ -19,6 +19,21 @@ For a new deck, choose by audience and content, then copy the selected HTML. Eac
 | `assets/templates/dispatch.html` | Weekly updates, editorial narratives | Masthead, three columns, editorial statement, follow-up | Newsprint, serif type, double rules |
 | `assets/templates/passage.html` | Milestone reviews, roadmaps, project history | Station cover, stage map, decision record, checkpoint | Warm paper, route markers, explicit status labels |
 
+## Choose by the story you need to tell
+
+| Story | Start with | Adaptation |
+|---|---|---|
+| A short talk with one thought per slide | Monograph | Repeat the statement composition with short phrases; keep detailed evidence on separate slides rather than shrinking the type |
+| A product or portfolio walkthrough | Monograph or Atelier | Replace the decorative exhibit with real work; keep screenshot text legible and the relevant UI intact |
+| Explain a small code change | Console | Pair a short excerpt with its explanation; use successive slides when the explanation needs steps |
+| Explain how a project changed direction | Passage | Put the original judgment, new evidence, and revised decision together; label stages with actual status and dates |
+| Report what changed in the data | Ledger | Keep comparison scale, unit, period, and source explicit; separate observation from possible explanation |
+| Work toward a shared next action | Workshop | Collect observations, then fill in the action worksheet with an owner and review time |
+
+For screenshots, use a local `<img>` with meaningful `alt` text and `object-fit: contain` when the full interface is evidence. Use `cover` only for an intentional crop, and label what the crop shows. Remove the original decorative pseudo-elements when replacing a CSS exhibit; do not leave them over the screenshot. Check readability at the smallest target viewport after adding actual images.
+
+For code walkthroughs, keep the code and its explanation visible together. Duplicate a slide to explain the next excerpt instead of adding a second click-to-reveal state machine. Update footer page markers after duplicating slides. These are authoring recommendations, not additional implemented layout modes or an upstream theme port.
+
 Replace all sample content, including document/slide titles, headers, footers, and labels. The statement in Editorial is original sample copy, not an attributed quotation. The workflow and portfolio panels are placeholders, not evidence of real results. Replace decorative CSS art with actual project evidence when appropriate. Keep footer content clear of the fixed controls.
 
 Ledger contains explicitly fictional example values (12, 18, 24) on a zero-based 0–24 scale. When replacing them, update bar widths, tick labels, units, accessible chart description, and source text together. Workshop is a presentation layout, not a collaborative or draggable whiteboard.

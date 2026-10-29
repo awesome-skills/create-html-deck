@@ -48,14 +48,14 @@ Reviewed 2026-10-29. This is a design-source notebook, not a ranking or a claim 
 
 Look beyond presentation engines for open-source editorial, documentation, portfolio, and data-report layouts. Favor a clear content role that the current collection lacks, and retain source links and the observed reason for adopting or declining each direction. Validate new local implementations independently of upstream screenshots.
 
-## Candidate queue — README reviewed, implementation deferred
+## Candidate queue — further inspection pending
 
-These candidates were discovered after the first 13 templates. Reading their README is not proof of build quality, visual correctness, or every advertised capability.
+These candidates were discovered after the first 13 templates. Inspection depth is recorded per entry; README claims and source inspection do not establish rendered quality or runtime correctness.
 
 | Candidate | Evidence read | What to inspect next | Scope decision |
 |---|---|---|---|
-| [Tahta](https://github.com/zcag/tahta) | README describes a token-based layout library and variants; links a live explorer | Compare its timeline, feature, and showcase compositions in the actual explorer | Look for a missing composition; do not import the design-system runtime |
-| [Takahashi](https://github.com/kecrily/slidev-theme-takahashi) | README exposes default/reverse layouts and screenshot links | Inspect large-type pacing and contrast in the screenshots | Potential lightning-talk template with intentionally very little text |
+| [Tahta](https://github.com/zcag/tahta) | README, showcase and code-explain layout source, MIT license; see study below | Inspect actual explorer and layout CSS before evaluating typography or image sizing | Reuse existing portfolio/code templates first; stepped explanations remain deferred |
+| [Takahashi](https://github.com/kecrily/slidev-theme-takahashi) | Default/reverse Vue layouts, typography CSS, package metadata; see study below | Inspect rendered screenshots; resolve exact license before any copying | Use Monograph for short, type-led talks; no separate near-duplicate template |
 | [Bento](https://github.com/nyblnet/bento) | README describes single-file decks and links its gallery | Inspect designed gallery examples for useful compositions | Editor, collaboration, and self-updates are outside this template expansion |
 | [CushLabs Scrollytelling](https://github.com/RCushmaniii/cushlabs-scrollytelling) | README describes scroll-driven narration and presentation/browse modes | Examine narrative pacing only if it offers a useful fixed-slide translation | Do not add scroll locking, audio autoplay, or a second presentation engine |
 
@@ -66,3 +66,23 @@ These candidates were discovered after the first 13 templates. Reading their REA
 The inspected layout separates time, stage headline, description, and status markers. Its screenshot uses a dark surface with amber completed stages. This supports a milestone storytelling direction; it does not validate the upstream application or all advertised layouts. Code-plus-explanation layouts remain uninspected.
 
 Passage is an original static implementation: a vertical station cover, a three-stage map with visible status words, a decision record, and a next-checkpoint layout. It uses warm paper and a rust accent; no upstream source, fonts, images, or runtime were copied. Equal stage spacing is explicitly identified as schematic so it cannot be mistaken for duration or completion percentage. The screenshot is research evidence only and is not shipped in the gallery.
+
+## Composition study — 2026-10-29, second follow-up
+
+### Tahta: media fit and code explanations
+
+Read [`showcase.vue`](https://github.com/zcag/tahta/blob/main/packages/theme/layouts/showcase.vue) (file SHA `848347edef3dde0953271dbd1ca060befa73de1b`) and [`code-explain.vue`](https://github.com/zcag/tahta/blob/main/packages/theme/layouts/code-explain.vue) (file SHA `a96bac4ce3a5ec01b76b41eb2e46281d6f9599e3`), alongside the repository [MIT license](https://github.com/zcag/tahta/blob/main/LICENSE), copyright Cagdas Salur, 2026.
+
+- Showcase selects left/right media placement and supports `contain` or `cover`, defaulting to cover. This distinction matters when replacing Monograph's decorative exhibit with an actual screenshot: full UI evidence should remain uncropped; a deliberately cropped detail needs a caption identifying its scope.
+- Code-explain pairs a code slot with notes and uses Slidev click state to emphasize the current note. The static layout is useful for Console. The click synchronization is coupled to Slidev navigation and is deferred here; a sequence of ordinary slides can preserve a one-key/one-slide interaction.
+- These are source-level findings. The layout CSS, `Fit` behavior, live explorer, accessibility, and upstream test claims were not verified in this pass. No upstream implementation or assets were copied.
+
+Decision: add practical selection/adaptation guidance to the existing collection. A separate theme is not justified by these two compositions alone. Reconsider after viewing the explorer if it reveals a distinct layout that supports a missing speaking context.
+
+### Takahashi: sparse text rather than another visual theme
+
+Read [`default.vue`](https://github.com/kecrily/slidev-theme-takahashi/blob/master/layouts/default.vue), [`reverse.vue`](https://github.com/kecrily/slidev-theme-takahashi/blob/master/layouts/reverse.vue), [`styles/layout.css`](https://github.com/kecrily/slidev-theme-takahashi/blob/master/styles/layout.css), and [`package.json`](https://github.com/kecrily/slidev-theme-takahashi/blob/master/package.json). The two layout files center their content; reverse adds a black background and white text. Typography utilities make headings much larger than paragraph text. This supports a sparse, one-thought-per-slide speaking style.
+
+The checked root `LICENSE` path returned 404 and package metadata did not declare a license. This does not establish that the repository has no license; exact reuse permission remains unresolved. No source or assets were copied. Rendered screenshots and Chinese line wrapping remain unverified.
+
+Decision: recommend Monograph's existing statement composition for short, type-led talks. Keep evidence-heavy explanations in Seminar or Ledger. A separate black/white centered theme would duplicate existing capability without enough additional value.
