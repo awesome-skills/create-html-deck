@@ -124,5 +124,14 @@
     "description": "站点式叙事与明确状态，讲清关键转折和下一检查点。",
     "layouts": "旅程 / 阶段 / 转折 / 检查点",
     "tone": "light"
+  },
+  {
+    "slug": "cabinet",
+    "name": "作品陈列",
+    "category": "creative",
+    "use": "系列作品 · 产品展示 · 设计评审",
+    "description": "从系列全貌走向单件细节，配合一致的作品卡片与规格说明。",
+    "layouts": "系列 / 集合 / 细节 / 评审",
+    "tone": "light"
   }
 ]

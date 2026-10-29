@@ -18,12 +18,14 @@ For a new deck, choose by audience and content, then copy the selected HTML. Eac
 | `assets/templates/ledger.html` | Data briefs, business reviews | Report cover, sample bar chart, evidence table, decision | Cool neutrals, blue bars, visible scope/source notes |
 | `assets/templates/dispatch.html` | Weekly updates, editorial narratives | Masthead, three columns, editorial statement, follow-up | Newsprint, serif type, double rules |
 | `assets/templates/passage.html` | Milestone reviews, roadmaps, project history | Station cover, stage map, decision record, checkpoint | Warm paper, route markers, explicit status labels |
+| `assets/templates/cabinet.html` | Product series, collections, design reviews | Series cover, collection cards, detail/specifications, review | Cool gallery surfaces, original CSS forms, consistent captions |
 
 ## Choose by the story you need to tell
 
 | Story | Start with | Adaptation |
 |---|---|---|
 | A short talk with one thought per slide | Monograph | Repeat the statement composition with short phrases; keep detailed evidence on separate slides rather than shrinking the type |
+| Compare a series of works | Cabinet | Replace all three CSS forms with actual works; keep comparable captions and specification fields |
 | A product or portfolio walkthrough | Monograph or Atelier | Replace the decorative exhibit with real work; keep screenshot text legible and the relevant UI intact |
 | Explain a small code change | Console | Pair a short excerpt with its explanation; use successive slides when the explanation needs steps |
 | Explain how a project changed direction | Passage | Put the original judgment, new evidence, and revised decision together; label stages with actual status and dates |
@@ -39,6 +41,8 @@ Replace all sample content, including document/slide titles, headers, footers, a
 Ledger contains explicitly fictional example values (12, 18, 24) on a zero-based 0–24 scale. When replacing them, update bar widths, tick labels, units, accessible chart description, and source text together. Workshop is a presentation layout, not a collaborative or draggable whiteboard.
 
 Passage uses equally spaced stages, not a proportional time axis or progress meter. Replace sample status words and marker classes (`done`, `current`, or neither) together; retain text labels so status does not depend on color. Replace dates, evidence, owners, and checkpoint criteria with actual project content.
+
+Cabinet uses original decorative CSS forms, not product photographs or measured geometry. Replace the entire `.object` element with the actual image rather than leaving its pseudo-elements in place. Keep image descriptions, work names, captions, dimensions, materials, and evidence consistent; remove the sample labels only after inserting real content.
 
 Customize the `:root` tokens and theme-layout CSS near the end of the style block. Duplicate or remove `<article class="slide">` sections for the story; update static footer page markers to match. The navigation counter derives its total from the slide list. Copying only the selected HTML is sufficient until you add local assets. System fonts vary across machines; recheck Chinese line breaks on the presentation device.
 

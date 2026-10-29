@@ -56,7 +56,7 @@ These candidates were discovered after the first 13 templates. Inspection depth 
 |---|---|---|---|
 | [Tahta](https://github.com/zcag/tahta) | README, showcase and code-explain layout source, MIT license; see study below | Inspect actual explorer and layout CSS before evaluating typography or image sizing | Reuse existing portfolio/code templates first; stepped explanations remain deferred |
 | [Takahashi](https://github.com/kecrily/slidev-theme-takahashi) | Default/reverse Vue layouts, typography CSS, package metadata; see study below | Inspect rendered screenshots; resolve exact license before any copying | Use Monograph for short, type-led talks; no separate near-duplicate template |
-| [Bento](https://github.com/nyblnet/bento) | MIT license, gallery asset source ledger, builder lines 1–150, live gallery, Terra cover and collection slide | Develop an original collection/detail layout with local placeholder art; validate independently | Product-series storytelling is a useful candidate; editor, collaboration, and self-updates remain out of scope |
+| [Bento](https://github.com/nyblnet/bento) | MIT license, gallery asset source ledger, builder lines 1–150, live gallery, Terra cover and collection slide | Cabinet now implements the collection/detail direction with original CSS forms; inspect other gallery directions only if they add a distinct use | Product-series storytelling is a useful candidate; editor, collaboration, and self-updates remain out of scope |
 
 ## Milestone study — 2026-10-29
 
@@ -103,3 +103,7 @@ Decision: shortlist an original product-series layout with an overview, a collec
 The [LICENSE](https://github.com/RCushmaniii/cushlabs-scrollytelling/blob/main/LICENSE), file SHA `1f25e3a0f6525e77ab62f795c0742b89d5a8542f`, identifies the project as proprietary portfolio demonstration material and explicitly disallows using its code as a project template or starting point. Public GitHub visibility does not make it an open-source template. The earlier README-only shortlist was provisional and is corrected here.
 
 Decision: exclude this repository from reusable template research. Only its README and license were read; no implementation was copied, cloned, installed, or adapted. Do not spend subsequent rounds exploring its source for reuse. The README's performance and production-readiness claims are not adopted as verified findings.
+
+## Local implementation: Cabinet — 2026-10-29
+
+Cabinet translates the previously inspected Bento Terra collection-to-detail idea into four original static layouts: series cover, a three-work comparison, detail/specification view, and review prompts. The cool neutral gallery, CSS arch/disc/layered forms, and Chinese copy were authored locally. No upstream code, product images, fonts, prices, or runtime were used. The forms are explicitly labeled conceptual placeholders; specification fields request actual information rather than inventing measurements. This adds a multi-work collection composition alongside Monograph's single exhibit and Atelier's palette/case study.
