@@ -74,7 +74,7 @@ Skill 会优先读取现有笔记、截图、spec、handoff 和已有 Deck；材
 
 ## 模板画廊
 
-[打开本地画廊](skills/create-html-deck/assets/templates/index.html)（下载后用浏览器打开），每套都有四页可播放示例，复制单个 HTML 即可开始，无需安装依赖。
+[打开本地画廊](skills/create-html-deck/assets/templates/index.html)（下载后用浏览器打开），现有 10 套，每套都有四页可播放示例，复制单个 HTML 即可开始，无需安装依赖。
 
 | 模板 | 预览 | 适合场景 |
 |---|---|---|
@@ -83,9 +83,13 @@ Skill 会优先读取现有笔记、截图、spec、handoff 和已有 Deck；材
 | [Swiss · 秩序与重点](skills/create-html-deck/assets/templates/swiss.html) | ![Swiss 封面](skills/create-html-deck/assets/templates/previews/swiss.png) | 策略提案、结构化汇报 |
 | [Atelier · 温暖工作室](skills/create-html-deck/assets/templates/atelier.html) | ![Atelier 封面](skills/create-html-deck/assets/templates/previews/atelier.png) | 作品集、设计评审 |
 
+画廊支持按用途筛选、预览和下载单个 HTML。
+
+新增方向：[Blueprint · 蓝图笔记](skills/create-html-deck/assets/templates/blueprint.html)、[Seminar · 研究札记](skills/create-html-deck/assets/templates/seminar.html)、[Poster · 醒目宣言](skills/create-html-deck/assets/templates/poster.html)、[Prism · 光谱舞台](skills/create-html-deck/assets/templates/prism.html)、[Console · 开发者手记](skills/create-html-deck/assets/templates/console.html)、[Monograph · 极简展陈](skills/create-html-deck/assets/templates/monograph.html)。完整预览见画廊。
+
 每套包含不同的封面、内容页、转场或对照页以及结尾构图；保留键盘导航、页码、等比缩放和打印。示例文案均需替换，模板中的流程与作品区域不代表真实项目证据。
 
-[选择与定制指南、设计参考来源](skills/create-html-deck/references/templates.md)
+[选择与定制指南](skills/create-html-deck/references/templates.md) · [开源设计调研记录](skills/create-html-deck/references/design-research.md)
 
 ## 质量门
 
@@ -117,9 +121,10 @@ python3 skills/create-html-deck/scripts/check_deck.py /absolute/path/to/deck.htm
     ├── SKILL.md
     ├── agents/openai.yaml
     ├── references/templates.md
-    ├── assets/templates/  # 四套模板、画廊和封面预览
+    ├── references/design-research.md
+    ├── assets/templates/  # 模板、目录、画廊和封面预览
     ├── assets/deck-template.html
-    └── scripts/check_deck.py
+    └── scripts/  # 结构检查、画廊生成和浏览器验证
 ```
 
 ## License

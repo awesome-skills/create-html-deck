@@ -1,4 +1,69 @@
 <!doctype html>
 <html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Deck Collection · 模板画廊</title><style>
-*{box-sizing:border-box}body{margin:0;background:#f1f0eb;color:#252822;font-family:"PingFang SC",system-ui,sans-serif}main{max-width:1440px;margin:auto;padding:64px 40px}header{border-top:2px solid;padding-top:24px;margin-bottom:60px}.eyebrow{font:14px monospace;letter-spacing:.14em}h1{font-size:clamp(40px,6vw,80px);font-weight:550;letter-spacing:-.05em;margin:32px 0 20px}header p{font-size:18px;line-height:1.8;color:#5b6158;max-width:720px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:48px 32px}.card{color:inherit;text-decoration:none;display:block;border:1px solid #cfcec6;background:#faf9f5;transition:transform .16s}.card:hover{transform:translateY(-4px)}.card:focus-visible{outline:3px solid #a33f2b;outline-offset:5px}.card img{width:100%;height:auto;display:block}.card div{padding:24px}.card span{font:12px monospace;letter-spacing:.12em}.card h2{font-size:27px;font-weight:500;margin:14px 0}.card b{float:right;font-weight:400}.card p{color:#62665e;margin:0;font-size:15px}footer{margin-top:60px;padding-top:24px;border-top:1px solid #bbbeb3;line-height:1.8}footer a{color:inherit;display:inline-block;padding:12px 0;min-height:44px}@media(max-width:640px){main{padding:32px 20px}.grid{grid-template-columns:1fr}header{margin-bottom:32px}}@media(prefers-reduced-motion:reduce){.card{transition:none}}
-</style></head><body><main><header><span class="eyebrow">CREATE HTML DECK / THE COLLECTION</span><h1>为你的故事，选一种表达。</h1><p>四种视觉语言，四组完整构图。点击封面开始播放，用方向键翻页。选好后复制对应 HTML，替换示例内容即可。</p></header><div class="grid"><a class="card" href="editorial.html"><img src="previews/editorial.png" alt="纸上叙事模板封面" width="960" height="540"><div><span>01 / EDITORIAL</span><h2>纸上叙事 <b>↗</b></h2><p>研究 / 观点 / 复盘 · 4 页示例</p></div></a><a class="card" href="nocturne.html"><img src="previews/nocturne.png" alt="深夜发布模板封面" width="960" height="540"><div><span>02 / NOCTURNE</span><h2>深夜发布 <b>↗</b></h2><p>技术 / 演示 / 发布 · 4 页示例</p></div></a><a class="card" href="swiss.html"><img src="previews/swiss.png" alt="秩序与重点模板封面" width="960" height="540"><div><span>03 / SWISS</span><h2>秩序与重点 <b>↗</b></h2><p>策略 / 提案 / 汇报 · 4 页示例</p></div></a><a class="card" href="atelier.html"><img src="previews/atelier.png" alt="温暖工作室模板封面" width="960" height="540"><div><span>04 / ATELIER</span><h2>温暖工作室 <b>↗</b></h2><p>作品 / 设计 / 创意 · 4 页示例</p></div></a></div><footer>离线可用 · 1920 × 1080 画布 · 键盘导航 · 可打印<br><a href="../deck-template.html">基础模板 ↗</a> &nbsp; <a href="../../references/templates.md">定制指南与设计参考 ↗</a></footer></main></body></html>
+*{box-sizing:border-box}body{margin:0;background:#f1f0eb;color:#252822;font-family:"PingFang SC",system-ui,sans-serif}main{max-width:1440px;margin:auto;padding:64px 40px}header{border-top:2px solid;padding-top:24px;margin-bottom:44px}.eyebrow{font:13px/1.6 ui-monospace,monospace;letter-spacing:.1em}.eyebrow span{float:right;color:#64695f;font-family:inherit}h1{font-size:clamp(40px,6vw,76px);font-weight:550;letter-spacing:-.05em;margin:30px 0 20px}header p{font-size:18px;line-height:1.8;color:#5b6158;max-width:760px}.meta{display:flex;flex-wrap:wrap;gap:8px 24px;font-size:14px;color:#5b6158;margin-top:28px}.filters{display:flex;flex-wrap:wrap;gap:10px}.filters button{font:inherit;min-height:44px;border:1px solid #bfc3b7;background:transparent;padding:10px 18px;border-radius:100px;color:inherit;cursor:pointer}.filters button[aria-pressed=true]{background:#273b30;color:#fff;border-color:#273b30}.count{font-size:14px;color:#5b6158;margin:20px 0 26px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:36px 30px}.card{border:1px solid #cfcec6;background:#faf9f5;min-width:0}.card[hidden]{display:none}.cover{display:block;overflow:hidden;background:#ddd}.cover img{width:100%;height:auto;display:block;transition:transform .2s}.cover:hover img{transform:scale(1.015)}a:focus-visible,button:focus-visible{outline:3px solid #a33f2b;outline-offset:4px}.details{padding:26px}.details .eyebrow{margin:0}.details h2{font-size:28px;font-weight:550;margin:14px 0}.description{font-size:16px;line-height:1.7;min-height:54px;margin:0}.use{font-size:14px;color:#475a4c;margin:18px 0 8px}.layouts{font-size:13px;color:#696c64;line-height:1.5;margin:0}.actions{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:22px;border-top:1px solid #dedfd6;padding-top:12px}.actions a{display:inline-flex;align-items:center;min-height:44px;color:#263b32;font-size:14px;text-decoration:underline;text-underline-offset:4px}.guide{margin-top:60px;padding:32px;background:#e6e9de;border:1px solid #cdd3c3}.guide h2{margin:0 0 16px;font-size:26px}.guide p{font-size:16px;line-height:1.8;margin:0;max-width:950px}footer{margin-top:40px;padding-top:22px;border-top:1px solid #bbbeb3;display:flex;flex-wrap:wrap;gap:12px 32px}footer a{color:inherit;display:inline-flex;align-items:center;min-height:44px;font-size:14px}@media(max-width:640px){main{padding:30px 20px}.grid{grid-template-columns:1fr}.description{min-height:0}header{margin-bottom:30px}.details{padding:22px}.guide{padding:24px}.filters{gap:8px}.filters button{padding:10px 14px}}@media(prefers-reduced-motion:reduce){.cover img{transition:none}}
+</style></head><body><main><header><span class="eyebrow">CREATE HTML DECK / THE COLLECTION</span><h1>为你的故事，选一种表达。</h1><p>按内容挑风格，再用完整示例试播。每套包含四种构图，复制一个 HTML 就能开始；没有在线字体，也不用安装运行依赖。</p><div class="meta"><span>10 套视觉模板</span><span>1920 × 1080 固定画布</span><span>中文示例 · 离线播放</span></div></header>
+<nav class="filters" aria-label="按场景筛选模板"><button type="button" data-filter="all" aria-pressed="true">全部风格</button><button type="button" data-filter="technical" aria-pressed="false">技术与产品</button><button type="button" data-filter="research" aria-pressed="false">研究与观点</button><button type="button" data-filter="business" aria-pressed="false">提案与发布</button><button type="button" data-filter="creative" aria-pressed="false">设计与创意</button></nav><p class="count" id="count" aria-live="polite">显示全部 10 套模板</p><div class="grid"><article class="card" data-category="research">
+          <a class="cover" href="editorial.html" aria-label="预览 纸上叙事"><img src="previews/editorial.png" alt="纸上叙事模板封面" width="960" height="540" loading="lazy"></a>
+          <div class="details"><p class="eyebrow">01 / EDITORIAL <span>浅色</span></p>
+          <h2>纸上叙事</h2><p class="description">纸感留白、衬线标题和杂志式分栏。</p><p class="use">观点分享 · 研究 · 复盘</p><p class="layouts">观点 / 证据 / 引言 / 结尾</p>
+          <div class="actions"><a href="editorial.html">播放 4 页示例 ↗</a><a href="editorial.html" download="editorial.html">下载 HTML ↓</a></div></div></article>
+<article class="card" data-category="technical">
+          <a class="cover" href="nocturne.html" aria-label="预览 深夜发布"><img src="previews/nocturne.png" alt="深夜发布模板封面" width="960" height="540" loading="lazy"></a>
+          <div class="details"><p class="eyebrow">02 / NOCTURNE <span>深色</span></p>
+          <h2>深夜发布</h2><p class="description">深绿夜色与荧光重点，围绕一个核心变化展开。</p><p class="use">技术演示 · 产品发布</p><p class="layouts">开场 / 流程 / 验证 / 结尾</p>
+          <div class="actions"><a href="nocturne.html">播放 4 页示例 ↗</a><a href="nocturne.html" download="nocturne.html">下载 HTML ↓</a></div></div></article>
+<article class="card" data-category="business">
+          <a class="cover" href="swiss.html" aria-label="预览 秩序与重点"><img src="previews/swiss.png" alt="秩序与重点模板封面" width="960" height="540" loading="lazy"></a>
+          <div class="details"><p class="eyebrow">03 / SWISS <span>浅色</span></p>
+          <h2>秩序与重点</h2><p class="description">严格网格、大号编号与克制的红色。</p><p class="use">策略 · 提案 · 汇报</p><p class="layouts">封面 / 议程 / 对照 / 决策</p>
+          <div class="actions"><a href="swiss.html">播放 4 页示例 ↗</a><a href="swiss.html" download="swiss.html">下载 HTML ↓</a></div></div></article>
+<article class="card" data-category="creative">
+          <a class="cover" href="atelier.html" aria-label="预览 温暖工作室"><img src="previews/atelier.png" alt="温暖工作室模板封面" width="960" height="540" loading="lazy"></a>
+          <div class="details"><p class="eyebrow">04 / ATELIER <span>浅色</span></p>
+          <h2>温暖工作室</h2><p class="description">陶土与森林绿，给作品和设计理由留出空间。</p><p class="use">作品集 · 设计评审</p><p class="layouts">封面 / 色彩 / 案例 / 结尾</p>
+          <div class="actions"><a href="atelier.html">播放 4 页示例 ↗</a><a href="atelier.html" download="atelier.html">下载 HTML ↓</a></div></div></article>
+<article class="card" data-category="technical">
+          <a class="cover" href="blueprint.html" aria-label="预览 蓝图笔记"><img src="previews/blueprint.png" alt="蓝图笔记模板封面" width="960" height="540" loading="lazy"></a>
+          <div class="details"><p class="eyebrow">05 / BLUEPRINT <span>浅色</span></p>
+          <h2>蓝图笔记</h2><p class="description">浅蓝方格纸、线框与可读的步骤关系。</p><p class="use">系统讲解 · 工程方案</p><p class="layouts">封面 / 边界 / 流程 / 行动</p>
+          <div class="actions"><a href="blueprint.html">播放 4 页示例 ↗</a><a href="blueprint.html" download="blueprint.html">下载 HTML ↓</a></div></div></article>
+<article class="card" data-category="research">
+          <a class="cover" href="seminar.html" aria-label="预览 研究札记"><img src="previews/seminar.png" alt="研究札记模板封面" width="960" height="540" loading="lazy"></a>
+          <div class="details"><p class="eyebrow">06 / SEMINAR <span>浅色</span></p>
+          <h2>研究札记</h2><p class="description">安静的蓝色侧栏，容纳假设、证据和引用。</p><p class="use">论文分享 · 研究汇报</p><p class="layouts">问题 / 假设 / 表格 / 边界</p>
+          <div class="actions"><a href="seminar.html">播放 4 页示例 ↗</a><a href="seminar.html" download="seminar.html">下载 HTML ↓</a></div></div></article>
+<article class="card" data-category="creative">
+          <a class="cover" href="poster.html" aria-label="预览 醒目宣言"><img src="previews/poster.png" alt="醒目宣言模板封面" width="960" height="540" loading="lazy"></a>
+          <div class="details"><p class="eyebrow">07 / POSTER <span>浅色</span></p>
+          <h2>醒目宣言</h2><p class="description">醒目字号、硬阴影与色块，带动现场节奏。</p><p class="use">活动 · 工作坊 · 创意提案</p><p class="layouts">海报 / 主题 / 转场 / 号召</p>
+          <div class="actions"><a href="poster.html">播放 4 页示例 ↗</a><a href="poster.html" download="poster.html">下载 HTML ↓</a></div></div></article>
+<article class="card" data-category="business">
+          <a class="cover" href="prism.html" aria-label="预览 光谱舞台"><img src="previews/prism.png" alt="光谱舞台模板封面" width="960" height="540" loading="lazy"></a>
+          <div class="details"><p class="eyebrow">08 / PRISM <span>深色</span></p>
+          <h2>光谱舞台</h2><p class="description">深靛舞台、柔和光晕与居中标题。</p><p class="use">产品发布 · 愿景分享</p><p class="layouts">开场 / 价值 / 转场 / 结尾</p>
+          <div class="actions"><a href="prism.html">播放 4 页示例 ↗</a><a href="prism.html" download="prism.html">下载 HTML ↓</a></div></div></article>
+<article class="card" data-category="technical">
+          <a class="cover" href="console.html" aria-label="预览 开发者手记"><img src="previews/console.png" alt="开发者手记模板封面" width="960" height="540" loading="lazy"></a>
+          <div class="details"><p class="eyebrow">09 / CONSOLE <span>深色</span></p>
+          <h2>开发者手记</h2><p class="description">终端提示符、伪代码和改动前后的对照。</p><p class="use">代码讲解 · 变更说明</p><p class="layouts">开场 / 代码 / 对照 / 验收</p>
+          <div class="actions"><a href="console.html">播放 4 页示例 ↗</a><a href="console.html" download="console.html">下载 HTML ↓</a></div></div></article>
+<article class="card" data-category="creative">
+          <a class="cover" href="monograph.html" aria-label="预览 极简展陈"><img src="previews/monograph.png" alt="极简展陈模板封面" width="960" height="540" loading="lazy"></a>
+          <div class="details"><p class="eyebrow">10 / MONOGRAPH <span>浅色</span></p>
+          <h2>极简展陈</h2><p class="description">黑白空间与大字陈述，让一个细节成为主角。</p><p class="use">作品展示 · 品牌 · 观点</p><p class="layouts">封面 / 作品 / 观点 / 结尾</p>
+          <div class="actions"><a href="monograph.html">播放 4 页示例 ↗</a><a href="monograph.html" download="monograph.html">下载 HTML ↓</a></div></div></article></div>
+<section class="guide"><h2>选好之后，怎么开始？</h2><p>先播放示例，确认适合你的内容，再下载 HTML 并替换标题、正文和页脚。使用方向键翻页，Home / End 跳到首尾。新增图片时，把素材与 HTML 一起保存；上台之前，在实际设备上检查中文换行和字号。</p></section>
+<footer><a href="../deck-template.html">基础模板 ↗</a><a href="../../references/templates.md">选择与定制指南 ↗</a><a href="../../references/design-research.md">开源设计参考 ↗</a></footer></main>
+<script>
+(() => {
+ const buttons = [...document.querySelectorAll('[data-filter]')];
+ const cards = [...document.querySelectorAll('[data-category]')];
+ buttons.forEach(button => button.addEventListener('click', () => {
+   const filter = button.dataset.filter;
+   buttons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+   cards.forEach(card => { card.hidden = filter !== 'all' && card.dataset.category !== filter; });
+   const visible = cards.filter(card => !card.hidden).length;
+   document.getElementById('count').textContent = `显示 ${visible} / ${cards.length} 套模板`;
+ }));
+})();
+</script></body></html>

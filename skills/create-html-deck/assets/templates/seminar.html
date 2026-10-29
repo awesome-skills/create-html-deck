@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Seminar / 研究札记</title>
+  <style>
+    :root {
+      --paper: #f4f0e6;
+      --ink: #171715;
+      --muted: #706b62;
+      --accent: #f35b2a;
+      --dark: #171715;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      background: #24231f;
+      color: var(--ink);
+      font-family: Inter, "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+    }
+
+    button { font: inherit; }
+
+    .stage {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .deck {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background: var(--paper);
+      box-shadow: 0 28px 90px rgb(0 0 0 / 28%);
+      transform-origin: center center;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      padding: 72px 84px 54px;
+      background: var(--paper);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 160ms ease;
+    }
+
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .slide.dark { background: var(--dark); color: var(--paper); }
+
+    .head, .foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .head { min-height: 58px; padding-top: 16px; border-top: 4px solid currentColor; }
+    .foot { min-height: 48px; padding-top: 14px; border-top: 2px solid currentColor; font-size: 20px; }
+    .eyebrow, .tag, .page { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .eyebrow { font-size: 22px; font-weight: 800; letter-spacing: .08em; }
+    .tag { padding: 7px 15px; border: 2px solid currentColor; border-radius: 999px; font-size: 19px; font-weight: 800; }
+    .body { min-height: 0; display: grid; align-content: center; padding: 36px 0 20px; }
+
+    h1, h2, p { margin: 0; }
+    h1 { max-width: 1500px; font-size: 112px; line-height: 1.15; letter-spacing: -.055em; text-wrap: balance; }
+    h2 { max-width: 1500px; font-size: 76px; line-height: 1.06; letter-spacing: -.04em; text-wrap: balance; }
+    .lead { max-width: 1300px; margin-top: 38px; color: var(--muted); font-size: 34px; line-height: 1.5; }
+    .dark .lead { color: #bbb6ac; }
+    .accent { color: var(--accent); }
+
+    .controls {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px;
+      border: 1px solid rgb(255 255 255 / 18%);
+      border-radius: 999px;
+      background: rgb(20 20 18 / 82%);
+    }
+
+    .controls button {
+      min-width: 44px;
+      min-height: 44px;
+      border: 0;
+      border-radius: 50%;
+      background: transparent;
+      color: white;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    .controls button:hover, .controls button:focus-visible { background: rgb(255 255 255 / 15%); outline: none; }
+    .controls button:disabled { cursor: default; opacity: .3; }
+    .counter { min-width: 72px; color: white; text-align: center; font: 800 14px/1 ui-monospace, SFMono-Regular, Menlo, monospace; }
+
+    @media (prefers-reduced-motion: reduce) { .slide { transition: none; } }
+
+    @media print {
+      html, body { overflow: visible; background: white; }
+      .stage, .deck { position: static; display: block; width: auto; height: auto; box-shadow: none; transform: none !important; }
+      .slide { position: relative; width: 1920px; height: 1080px; opacity: 1; visibility: visible; page-break-after: always; }
+      .controls { display: none; }
+    }
+
+
+
+    :root { --paper: #fbfaf7; --ink: #20354a; --accent: #1c6174; --muted: #586977; }
+    .slide { padding: 68px 84px 64px; }
+    .head { border-top: 1px solid currentColor; }
+    .tag { border: 1px solid; font-size: 20px; font-weight: 500; }
+    .foot { padding-right: 250px; font-size: 22px; border-top: 1px solid currentColor; }
+    .body { gap: 32px; padding: 38px 0; }
+    h1 { font-size: 116px; line-height: 1.15; }
+    h2 { font-size: 76px; line-height: 1.2; }
+    h3 { font-size: 38px; line-height: 1.3; margin: 0 0 20px; }
+    .lead { margin-top: 24px; max-width: 1260px; }
+    .kicker { font: 24px/1.5 ui-monospace, monospace; text-transform: uppercase; letter-spacing: .1em; }
+    .label { font: 24px/1.5 ui-monospace, monospace; }
+    .note { font-size: 26px; line-height: 1.5; color: var(--muted); }
+    .split { display: grid; grid-template-columns: 1.1fr 1fr; gap: 72px; align-items: center; }
+    .stack { display: grid; gap: 30px; }
+    .item { padding: 24px 0; border-top: 1px solid; }
+    .item p, .copy { font-size: 30px; line-height: 1.6; }
+    .triptych { display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; }
+    .triptych section { padding: 32px; }
+    .triptych h3 { margin-top: 20px; }
+    .triptych p { font-size: 28px; line-height: 1.5; }
+    .center { text-align: center; justify-items: center; }
+    .center .lead { margin-left: auto; margin-right: auto; }
+    .statement { font-size: 104px; line-height: 1.3; }
+    @page { size: 1920px 1080px; margin: 0; }
+    @media print { html,body { width: auto; height: auto; print-color-adjust: exact; -webkit-print-color-adjust: exact; } .slide { break-inside: avoid; } .slide:last-child { page-break-after: auto; } }
+
+    .slide { border-left: 22px solid var(--accent); padding-left: 104px; }
+    h1,h2 { font-family: Georgia,"Songti SC",serif; font-weight: 500; }
+    .head { border: 0; }.tag { border: 0; padding: 0; }
+    .abstract { border-left: 4px solid var(--accent); padding-left: 36px; max-width: 1100px; }
+    .citation { font-size: 24px; line-height: 1.5; border-top: 1px solid #bac7cd; padding-top: 20px; color: var(--muted); }
+    .claim { background: #e5eef0; padding: 40px; border-top: 5px solid var(--accent); }
+    .matrix { border-collapse: collapse; width: 100%; font-size: 30px; }
+    .matrix th { text-align: left; background: #e5eef0; }.matrix th,.matrix td { padding: 24px; border-bottom: 1px solid #b6c3c9; }
+    .scope { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+  </style>
+</head>
+<body>
+  <main class="stage" aria-label="Presentation">
+    <section class="deck" id="deck">
+      <article class="slide active" data-title="Seminar / 研究札记 · 研究开场">
+        <header class="head"><span class="eyebrow">SEMINAR / 01</span><span class="tag">研究开场</span></header>
+        <div class="body"><p class="kicker">Research notes / 研究分享</p><h1>从一个问题，<br>走向一份证据。</h1><div class="abstract"><p class="lead">用清晰的问题、可检查的方法，<br>以及有边界的结论，组织一次研究分享。</p></div><p class="note">报告人 / 研究小组 / 日期 · 请替换</p></div>
+        <footer class="foot"><span>Seminar / 研究札记 · 示例内容，请替换</span><span class="page">01 / 04</span></footer>
+      </article>
+
+      <article class="slide" data-title="Seminar / 研究札记 · 研究问题">
+        <header class="head"><span class="eyebrow">SEMINAR / 02</span><span class="tag">研究问题</span></header>
+        <div class="body"><div class="split"><div><p class="kicker">01 / Research question</p><h2>我们到底<br>想解释什么？</h2><p class="lead">在此描述研究对象与条件，<br>让问题足够具体。</p></div><div class="claim"><h3>待检验的判断</h3><p class="copy">在这里写下假设，以及什么结果会支持或反驳它。</p><p class="citation">证据来源 / 作者、标题、年份或链接<br>请用真实引用替换</p></div></div></div>
+        <footer class="foot"><span>Seminar / 研究札记 · 示例内容，请替换</span><span class="page">02 / 04</span></footer>
+      </article>
+
+      <article class="slide" data-title="Seminar / 研究札记 · 证据对照">
+        <header class="head"><span class="eyebrow">SEMINAR / 03</span><span class="tag">证据对照</span></header>
+        <div class="body"><p class="kicker">02 / Evidence</p><h2>把观察与解释放在一起。</h2><table class="matrix"><thead><tr><th scope="col">比较维度</th><th scope="col">观察记录</th><th scope="col">解释边界</th></tr></thead><tbody><tr><th scope="row">样本与条件</th><td>填入实际范围</td><td>说明适用条件</td></tr><tr><th scope="row">主要发现</th><td>填入实际结果</td><td>标明不确定性</td></tr></tbody></table><p class="citation">表格为结构示例，不包含实验数据。补充真实来源后再用于报告。</p></div>
+        <footer class="foot"><span>Seminar / 研究札记 · 示例内容，请替换</span><span class="page">03 / 04</span></footer>
+      </article>
+
+      <article class="slide" data-title="Seminar / 研究札记 · 结论与边界">
+        <header class="head"><span class="eyebrow">SEMINAR / 04</span><span class="tag">结论与边界</span></header>
+        <div class="body"><p class="kicker">03 / What we know</p><h2>结论，也需要边界。</h2><div class="scope"><section class="item"><h3>现有证据支持</h3><p>用简短文字写下可以成立的判断。</p></section><section class="item"><h3>仍待验证</h3><p>保留限制条件与下一项研究问题。</p></section></div><p class="lead">让下一次讨论，从这里继续。</p></div>
+        <footer class="foot"><span>Seminar / 研究札记 · 示例内容，请替换</span><span class="page">04 / 04</span></footer>
+      </article>
+    </section>
+  </main>
+
+  <nav class="controls" aria-label="Slide controls">
+    <button id="prev" type="button" aria-label="Previous slide">←</button>
+    <span class="counter" id="counter" aria-live="polite">1 / 4</span>
+    <button id="next" type="button" aria-label="Next slide">→</button>
+  </nav>
+
+  <script>
+    (() => {
+      const deck = document.getElementById('deck');
+      const slides = [...document.querySelectorAll('.slide')];
+      const prev = document.getElementById('prev');
+      const next = document.getElementById('next');
+      const counter = document.getElementById('counter');
+      const storageKey = `html-deck:${location.pathname}:slide`;
+      let saved = 0;
+      try { saved = Number.parseInt(localStorage.getItem(storageKey) ?? '0', 10); } catch { /* Storage may be unavailable for local files. */ }
+      let current = Number.isFinite(saved) ? saved : 0;
+
+      function scaleDeck() {
+        const scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+        deck.style.transform = `translate(-50%, -50%) scale(${scale})`;
+      }
+
+      function show(index) {
+        current = Math.min(Math.max(index, 0), slides.length - 1);
+        slides.forEach((slide, slideIndex) => {
+          const active = slideIndex === current;
+          slide.classList.toggle('active', active);
+          slide.setAttribute('aria-hidden', active ? 'false' : 'true');
+          slide.inert = !active;
+        });
+        counter.textContent = `${current + 1} / ${slides.length}`;
+        prev.disabled = current === 0;
+        next.disabled = current === slides.length - 1;
+        try { localStorage.setItem(storageKey, String(current)); } catch { /* Navigation still works without persistence. */ }
+        document.title = slides[current].dataset.title || 'HTML Deck';
+      }
+
+      prev.addEventListener('click', () => show(current - 1));
+      next.addEventListener('click', () => show(current + 1));
+      window.addEventListener('resize', scaleDeck);
+      window.addEventListener('keydown', event => {
+        if (['INPUT', 'TEXTAREA', 'SELECT', 'BUTTON'].includes(event.target.tagName)) return;
+        if (['ArrowRight', 'PageDown', ' '].includes(event.key)) { event.preventDefault(); show(current + 1); }
+        if (['ArrowLeft', 'PageUp'].includes(event.key)) { event.preventDefault(); show(current - 1); }
+        if (event.key === 'Home') { event.preventDefault(); show(0); }
+        if (event.key === 'End') { event.preventDefault(); show(slides.length - 1); }
+      });
+
+      scaleDeck();
+      show(current);
+    })();
+  </script>
+</body>
+</html>

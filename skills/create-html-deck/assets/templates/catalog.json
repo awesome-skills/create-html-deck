@@ -1,0 +1,12 @@
+[
+  {"slug":"editorial","name":"纸上叙事","category":"research","use":"观点分享 · 研究 · 复盘","description":"纸感留白、衬线标题和杂志式分栏。","layouts":"观点 / 证据 / 引言 / 结尾","tone":"light"},
+  {"slug":"nocturne","name":"深夜发布","category":"technical","use":"技术演示 · 产品发布","description":"深绿夜色与荧光重点，围绕一个核心变化展开。","layouts":"开场 / 流程 / 验证 / 结尾","tone":"dark"},
+  {"slug":"swiss","name":"秩序与重点","category":"business","use":"策略 · 提案 · 汇报","description":"严格网格、大号编号与克制的红色。","layouts":"封面 / 议程 / 对照 / 决策","tone":"light"},
+  {"slug":"atelier","name":"温暖工作室","category":"creative","use":"作品集 · 设计评审","description":"陶土与森林绿，给作品和设计理由留出空间。","layouts":"封面 / 色彩 / 案例 / 结尾","tone":"light"},
+  {"slug":"blueprint","name":"蓝图笔记","category":"technical","use":"系统讲解 · 工程方案","description":"浅蓝方格纸、线框与可读的步骤关系。","layouts":"封面 / 边界 / 流程 / 行动","tone":"light"},
+  {"slug":"seminar","name":"研究札记","category":"research","use":"论文分享 · 研究汇报","description":"安静的蓝色侧栏，容纳假设、证据和引用。","layouts":"问题 / 假设 / 表格 / 边界","tone":"light"},
+  {"slug":"poster","name":"醒目宣言","category":"creative","use":"活动 · 工作坊 · 创意提案","description":"醒目字号、硬阴影与色块，带动现场节奏。","layouts":"海报 / 主题 / 转场 / 号召","tone":"light"},
+  {"slug":"prism","name":"光谱舞台","category":"business","use":"产品发布 · 愿景分享","description":"深靛舞台、柔和光晕与居中标题。","layouts":"开场 / 价值 / 转场 / 结尾","tone":"dark"},
+  {"slug":"console","name":"开发者手记","category":"technical","use":"代码讲解 · 变更说明","description":"终端提示符、伪代码和改动前后的对照。","layouts":"开场 / 代码 / 对照 / 验收","tone":"dark"},
+  {"slug":"monograph","name":"极简展陈","category":"creative","use":"作品展示 · 品牌 · 观点","description":"黑白空间与大字陈述，让一个细节成为主角。","layouts":"封面 / 作品 / 观点 / 结尾","tone":"light"}
+]
