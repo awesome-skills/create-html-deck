@@ -115,5 +115,14 @@
     "description": "报刊式刊头、三栏线索与编辑寄语。",
     "layouts": "刊头 / 三栏 / 观点 / 追踪",
     "tone": "light"
+  },
+  {
+    "slug": "passage",
+    "name": "里程碑",
+    "category": "business",
+    "use": "项目复盘 · 路线图 · 阶段汇报",
+    "description": "站点式叙事与明确状态，讲清关键转折和下一检查点。",
+    "layouts": "旅程 / 阶段 / 转折 / 检查点",
+    "tone": "light"
   }
 ]
