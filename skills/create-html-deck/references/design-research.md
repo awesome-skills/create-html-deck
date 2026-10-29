@@ -56,8 +56,7 @@ These candidates were discovered after the first 13 templates. Inspection depth 
 |---|---|---|---|
 | [Tahta](https://github.com/zcag/tahta) | README, showcase and code-explain layout source, MIT license; see study below | Inspect actual explorer and layout CSS before evaluating typography or image sizing | Reuse existing portfolio/code templates first; stepped explanations remain deferred |
 | [Takahashi](https://github.com/kecrily/slidev-theme-takahashi) | Default/reverse Vue layouts, typography CSS, package metadata; see study below | Inspect rendered screenshots; resolve exact license before any copying | Use Monograph for short, type-led talks; no separate near-duplicate template |
-| [Bento](https://github.com/nyblnet/bento) | README describes single-file decks and links its gallery | Inspect designed gallery examples for useful compositions | Editor, collaboration, and self-updates are outside this template expansion |
-| [CushLabs Scrollytelling](https://github.com/RCushmaniii/cushlabs-scrollytelling) | README describes scroll-driven narration and presentation/browse modes | Examine narrative pacing only if it offers a useful fixed-slide translation | Do not add scroll locking, audio autoplay, or a second presentation engine |
+| [Bento](https://github.com/nyblnet/bento) | MIT license, gallery asset source ledger, builder lines 1–150, live gallery, Terra cover and collection slide | Develop an original collection/detail layout with local placeholder art; validate independently | Product-series storytelling is a useful candidate; editor, collaboration, and self-updates remain out of scope |
 
 ## Milestone study — 2026-10-29
 
@@ -86,3 +85,21 @@ Read [`default.vue`](https://github.com/kecrily/slidev-theme-takahashi/blob/mast
 The checked root `LICENSE` path returned 404 and package metadata did not declare a license. This does not establish that the repository has no license; exact reuse permission remains unresolved. No source or assets were copied. Rendered screenshots and Chinese line wrapping remain unverified.
 
 Decision: recommend Monograph's existing statement composition for short, type-led talks. Keep evidence-heavy explanations in Seminar or Ledger. A separate black/white centered theme would duplicate existing capability without enough additional value.
+
+## Gallery and licensing study — 2026-10-29, third follow-up
+
+### Bento: a product collection needs image-led compositions
+
+Inspected the live [gallery](https://bento.page/), the [Terra template](https://bento.page/gallery/terra-premium-product.bento.html) cover in its editor, and slide 3/5 in presentation mode. Screenshots were viewed after the transition settled; the first capture during transition was blank and was not treated as a layout result. The other gallery directions were identified from the landing page, not individually validated.
+
+Terra's cover combines a dominant product image with smaller detail images. Its collection slide uses three consistent image cards, each with a name and a small metadata row, beneath a single headline. This creates a collection-to-detail storytelling opportunity beyond the current single-exhibit Monograph layout. The example's brand, inventory, and prices are fictional (the builder explicitly identifies gallery content as fictional); they are not evidence about real museum objects or businesses.
+
+Read the [MIT license](https://github.com/nyblnet/bento/blob/main/LICENSE), [`build-example-decks.mjs` lines 1–150](https://github.com/nyblnet/bento/blob/main/scripts/build-example-decks.mjs#L1-L150) (file SHA `f2cc02140e74a79516bf2c7127544c421bde3699`), and [`gallery-photos/SOURCES.md`](https://github.com/nyblnet/bento/blob/main/scripts/gallery-photos/SOURCES.md). The inspected builder embeds image/font assets and constructs slide elements; it was not executed. The asset ledger identifies NASA/Library of Congress public-domain material, Met CC0 objects, and OFL fonts. These are upstream provenance records, not an independent verification of every original asset's rights.
+
+Decision: shortlist an original product-series layout with an overview, a collection comparison, and a detail/specification page. Use original local placeholder art until actual user assets are supplied, and label all sample specifications. No images, fonts, source code, app shell, morph engine, editor, or collaboration behavior were imported. Runtime, offline longevity, performance, and security claims in the upstream README were not audited.
+
+### Removed from the open-source candidate queue: CushLabs
+
+The [LICENSE](https://github.com/RCushmaniii/cushlabs-scrollytelling/blob/main/LICENSE), file SHA `1f25e3a0f6525e77ab62f795c0742b89d5a8542f`, identifies the project as proprietary portfolio demonstration material and explicitly disallows using its code as a project template or starting point. Public GitHub visibility does not make it an open-source template. The earlier README-only shortlist was provisional and is corrected here.
+
+Decision: exclude this repository from reusable template research. Only its README and license were read; no implementation was copied, cloned, installed, or adapted. Do not spend subsequent rounds exploring its source for reuse. The README's performance and production-readiness claims are not adopted as verified findings.
