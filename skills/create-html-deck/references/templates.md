@@ -19,6 +19,7 @@ For a new deck, choose by audience and content, then copy the selected HTML. Eac
 | `assets/templates/dispatch.html` | Weekly updates, editorial narratives | Masthead, three columns, editorial statement, follow-up | Newsprint, serif type, double rules |
 | `assets/templates/passage.html` | Milestone reviews, roadmaps, project history | Station cover, stage map, decision record, checkpoint | Warm paper, route markers, explicit status labels |
 | `assets/templates/cabinet.html` | Product series, collections, design reviews | Series cover, collection cards, detail/specifications, review | Cool gallery surfaces, original CSS forms, consistent captions |
+| `assets/templates/profile.html` | Speaker introductions, personal profiles, team introductions | Name card, experience rows, contribution comparison, contact | Deep green identity block, date column, explicit role boundaries |
 
 ## Choose by the story you need to tell
 
@@ -43,6 +44,8 @@ Ledger contains explicitly fictional example values (12, 18, 24) on a zero-based
 Passage uses equally spaced stages, not a proportional time axis or progress meter. Replace sample status words and marker classes (`done`, `current`, or neither) together; retain text labels so status does not depend on color. Replace dates, evidence, owners, and checkpoint criteria with actual project content.
 
 Cabinet uses original decorative CSS forms, not product photographs or measured geometry. Replace the entire `.object` element with the actual image rather than leaving its pseudo-elements in place. Keep image descriptions, work names, captions, dimensions, materials, and evidence consistent; remove the sample labels only after inserting real content.
+
+Profile contains prompts rather than a fictional biography. Replace the name, role, date ranges, contribution descriptions, and contact fields together. If replacing the name mark with a portrait, use an authorized local image and meaningful alt text. Keep personal contributions distinct from team outcomes and leave unverified claims out.
 
 Customize the `:root` tokens and theme-layout CSS near the end of the style block. Duplicate or remove `<article class="slide">` sections for the story; update static footer page markers to match. The navigation counter derives its total from the slide list. Copying only the selected HTML is sufficient until you add local assets. System fonts vary across machines; recheck Chinese line breaks on the presentation device.
 

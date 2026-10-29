@@ -133,5 +133,14 @@
     "description": "从系列全貌走向单件细节，配合一致的作品卡片与规格说明。",
     "layouts": "系列 / 集合 / 细节 / 评审",
     "tone": "light"
+  },
+  {
+    "slug": "profile",
+    "name": "人物介绍",
+    "category": "business",
+    "use": "自我介绍 · 讲者介绍 · 团队交流",
+    "description": "姓名名片、经历列表与贡献边界，让个人介绍有具体内容。",
+    "layouts": "名片 / 经历 / 贡献 / 交流",
+    "tone": "light"
   }
 ]

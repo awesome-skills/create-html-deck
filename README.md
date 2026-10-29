@@ -74,7 +74,7 @@ Skill 会优先读取现有笔记、截图、spec、handoff 和已有 Deck；材
 
 ## 模板画廊
 
-[打开本地画廊](skills/create-html-deck/assets/templates/index.html)（下载后用浏览器打开），现有 15 套，每套都有四页可播放示例，复制单个 HTML 即可开始，无需安装依赖。
+[打开本地画廊](skills/create-html-deck/assets/templates/index.html)（下载后用浏览器打开），现有 16 套，每套都有四页可播放示例，复制单个 HTML 即可开始，无需安装依赖。
 
 | 模板 | 预览 | 适合场景 |
 |---|---|---|
@@ -98,6 +98,7 @@ Skill 会优先读取现有笔记、截图、spec、handoff 和已有 Deck；材
 | [Dispatch · 编辑部来信](skills/create-html-deck/assets/templates/dispatch.html) | 周报 · 趋势观察 · 编辑叙事 |
 | [Passage · 里程碑](skills/create-html-deck/assets/templates/passage.html) | 项目复盘 · 路线图 · 阶段汇报 |
 | [Cabinet · 作品陈列](skills/create-html-deck/assets/templates/cabinet.html) | 系列作品 · 产品展示 · 设计评审 |
+| [Profile · 人物介绍](skills/create-html-deck/assets/templates/profile.html) | 自我介绍 · 讲者介绍 · 团队交流 |
 
 每套包含不同的封面、内容页、转场或对照页以及结尾构图；保留键盘导航、页码、等比缩放和打印。示例文案均需替换，模板中的流程与作品区域不代表真实项目证据。
 
