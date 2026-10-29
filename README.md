@@ -72,6 +72,21 @@ Skill 会优先读取现有笔记、截图、spec、handoff 和已有 Deck；材
 
 新建 Deck 时可从 [`deck-template.html`](skills/create-html-deck/assets/deck-template.html) 开始；已有 Deck 会尽量保留原来的视觉语言
 
+## 模板画廊
+
+[打开本地画廊](skills/create-html-deck/assets/templates/index.html)（下载后用浏览器打开），每套都有四页可播放示例，复制单个 HTML 即可开始，无需安装依赖。
+
+| 模板 | 预览 | 适合场景 |
+|---|---|---|
+| [Editorial · 纸上叙事](skills/create-html-deck/assets/templates/editorial.html) | ![Editorial 封面](skills/create-html-deck/assets/templates/previews/editorial.png) | 研究分享、观点表达、复盘 |
+| [Nocturne · 深夜发布](skills/create-html-deck/assets/templates/nocturne.html) | ![Nocturne 封面](skills/create-html-deck/assets/templates/previews/nocturne.png) | 技术演示、产品发布 |
+| [Swiss · 秩序与重点](skills/create-html-deck/assets/templates/swiss.html) | ![Swiss 封面](skills/create-html-deck/assets/templates/previews/swiss.png) | 策略提案、结构化汇报 |
+| [Atelier · 温暖工作室](skills/create-html-deck/assets/templates/atelier.html) | ![Atelier 封面](skills/create-html-deck/assets/templates/previews/atelier.png) | 作品集、设计评审 |
+
+每套包含不同的封面、内容页、转场或对照页以及结尾构图；保留键盘导航、页码、等比缩放和打印。示例文案均需替换，模板中的流程与作品区域不代表真实项目证据。
+
+[选择与定制指南、设计参考来源](skills/create-html-deck/references/templates.md)
+
 ## 质量门
 
 先运行便携结构检查：
@@ -101,6 +116,8 @@ python3 skills/create-html-deck/scripts/check_deck.py /absolute/path/to/deck.htm
 └── skills/create-html-deck/
     ├── SKILL.md
     ├── agents/openai.yaml
+    ├── references/templates.md
+    ├── assets/templates/  # 四套模板、画廊和封面预览
     ├── assets/deck-template.html
     └── scripts/check_deck.py
 ```
