@@ -1,6 +1,6 @@
 # Open-source design research
 
-Reviewed 2026-10-29. This is a design-source notebook, not a ranking or a claim that every upstream project has been installed or tested. The bundled templates use original CSS, artwork, and sample copy. No upstream theme code, photos, logos, or fonts are redistributed.
+Reviewed through 2026-10-30 (Asia/Shanghai). This is a design-source notebook, not a ranking or a claim that every upstream project has been installed or tested. The bundled templates use original CSS, artwork, and sample copy. No upstream theme code, photos, logos, or fonts are redistributed.
 
 ## Presentation systems and discovery
 
@@ -107,3 +107,15 @@ Decision: exclude this repository from reusable template research. Only its READ
 ## Local implementation: Cabinet — 2026-10-29
 
 Cabinet translates the previously inspected Bento Terra collection-to-detail idea into four original static layouts: series cover, a three-work comparison, detail/specification view, and review prompts. The cool neutral gallery, CSS arch/disc/layered forms, and Chinese copy were authored locally. No upstream code, product images, fonts, prices, or runtime were used. The forms are explicitly labeled conceptual placeholders; specification fields request actual information rather than inventing measurements. This adds a multi-work collection composition alongside Monograph's single exhibit and Atelier's palette/case study.
+
+## New-source screening — 2026-10-30
+
+Searched GitHub repository metadata for infographic slide themes, MIT workshop presentation themes, and editorial portfolio templates. These queries produced the candidates below; search ranking is not a quality assessment.
+
+| Source | Evidence inspected | Decision and next useful check |
+|---|---|---|
+| [present-now](https://github.com/Taimoorkhan1122/present-now) | README, root MIT license, [`template/src/head.html` lines 1–100](https://github.com/Taimoorkhan1122/present-now/blob/main/template/src/head.html#L1-L100), file SHA `05c8bf6928f990035f9931e9de32fb89091be7da` | The inspected source uses a 1600×900 canvas, system fonts, warm serif headings, grids, and cards. Those compositions substantially overlap Editorial and Swiss; no new palette variant. The README's before/after and workshop interactions may warrant a future demo inspection, but their behavior was not tested. No installation, scripts, or agent workflow was adopted. |
+| [cooked-folio](https://github.com/shahriaravi/cooked-folio) | README, root MIT license (copyright 2025 Shahriar Avi), repository file tree, [`ExperienceList.tsx`](https://github.com/shahriaravi/cooked-folio/blob/main/src/components/sections/ExperienceList.tsx), file SHA `fa0f47a734238ad52020037f814adbcd4a0cc95b` | The source separates date metadata from role, company, and description using a responsive two-column grid. A speaker profile or career narrative is a possible missing use; inspect the rendered composition before deciding to implement. Its 11px metadata and 16px body are website sizes, not suitable deck defaults. Live presence, booking, audio feedback, analytics, and extension-blocking features are outside scope. |
+| [Workshop Materials](https://github.com/experimental-software/workshop-materials) | README and repository search metadata (archived) | The README identifies Hugo workshop pages, Reveal.js presentations, and Codelabs-inspired tutorials. It also credits a CC BY 3.0 homepage layout, Font Awesome icons, fonts, and separately licensed dependencies; a root MIT label does not resolve those assets. Defer copying and theme adoption. Inspect an exercise page only if it can contribute a distinct task/input/checkpoint composition beyond Workshop. |
+
+The cooked-folio README's `Projects.tsx` path returned 404; the actual tree uses `ProjectList.tsx`. Only `ExperienceList.tsx` was inspected in this pass. README paths should be checked against the current tree before reuse. No live demos, screenshots, upstream builds, or runtime claims were verified in this screening pass, and no code, assets, personal profile content, or third-party instructions were imported. The collection remains at 15 distinct templates.
