@@ -34,7 +34,16 @@ export async function verifyTemplates(task, { baseURL, slugs, outputDir, preview
               fits: deck.left >= -1 && deck.top >= -1 && deck.right <= innerWidth + 1 && deck.bottom <= innerHeight + 1,
               scrolls: document.documentElement.scrollWidth > innerWidth || document.documentElement.scrollHeight > innerHeight,
               bodyFits: body.bottom <= footer.top + 1,
-              overflowing: content.filter(e => e.clientWidth && getComputedStyle(e).overflowX !== 'hidden' && e.scrollWidth > e.clientWidth + 2).map(e => e.className),
+              overflowing: content.filter(e => {
+                // SVG scrollWidth/clientWidth do not describe text overflow reliably.
+                if (e instanceof SVGElement) {
+                  if (!e.ownerSVGElement) return false;
+                  const rect = e.getBoundingClientRect();
+                  const viewport = e.ownerSVGElement.getBoundingClientRect();
+                  return rect.width > 0 && (rect.left < viewport.left - 2 || rect.right > viewport.right + 2 || rect.top < viewport.top - 2 || rect.bottom > viewport.bottom + 2);
+                }
+                return e.clientWidth && getComputedStyle(e).overflowX !== 'hidden' && e.scrollWidth > e.clientWidth + 2;
+              }).map(e => e.getAttribute('class') || e.tagName),
               textOutside: content.filter(e => !e.children.length && e.textContent.trim()).filter(e => {
                 const rect = e.getBoundingClientRect();
                 return rect.bottom > footer.top + 1 || rect.top < body.top - 1;

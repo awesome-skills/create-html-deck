@@ -164,6 +164,7 @@
     .axis { margin: 0 94px 0 154px; display:flex; justify-content:space-between; font: 22px ui-monospace,monospace; color:#55677b; border-top:1px solid #9cabbc; padding-top:16px; }
     .evidence-table { width:100%; border-collapse:collapse; background:#fff; font-size:30px; }.evidence-table th,.evidence-table td { text-align:left; padding:28px; border-bottom:1px solid #c0ccda; }.evidence-table th { background:#e3ebf3; font-weight:600; }
     .source { font-size:24px; color:#55677b; line-height:1.5; margin-top:24px; }.decision { border-left:8px solid var(--accent); padding:30px 40px; background:#e3ebf3; }
+    .slope-chart { display:block; width:100%; height:430px; flex-shrink:0; background:#fff; border:1px solid #c0ccda; }
   </style>
 </head>
 <body>
@@ -172,32 +173,46 @@
       <article class="slide active" data-title="Ledger / 数据简报 · 报告开场">
         <header class="head"><span class="eyebrow">LEDGER / 01</span><span class="tag">报告开场</span></header>
         <div class="body"><div class="report-cover"><div><p class="kicker">Decision brief / 数据简报</p><h1>从数据，<br>到判断。</h1><p class="lead">先说清口径，<br>再讨论变化意味着什么。</p></div><div class="cover-index"><section><span>01</span><h3>我们看到了什么</h3></section><section><span>02</span><h3>哪些解释成立</h3></section><section><span>03</span><h3>下一步如何验证</h3></section></div></div></div>
-        <footer class="foot"><span>Ledger / 数据简报 · 示例内容，请替换</span><span class="page">01 / 04</span></footer>
+        <footer class="foot"><span>Ledger / 数据简报 · 示例内容，请替换</span><span class="page">01 / 05</span></footer>
       </article>
 
       <article class="slide" data-title="Ledger / 数据简报 · 比较图表">
         <header class="head"><span class="eyebrow">LEDGER / 02</span><span class="tag">比较图表</span></header>
         <div class="body"><p class="kicker">01 / Compare on the same scale</p><h2>比较之前，先说清口径。</h2><div class="chart-panel" role="img" aria-label="虚构样例条形图，样例甲12分、样例乙18分、样例丙24分，统一刻度0至24分"><p class="label">固定虚构样例 / 分数</p><div class="bar-row"><span>样例甲</span><div class="track"><div class="bar" style="width:50%"></div></div><b>12</b></div><div class="bar-row"><span>样例乙</span><div class="track"><div class="bar" style="width:75%"></div></div><b>18</b></div><div class="bar-row"><span>样例丙</span><div class="track"><div class="bar" style="width:100%"></div></div><b>24</b></div><div class="axis"><span>0</span><span>6</span><span>12</span><span>18</span><span>24</span></div></div><p class="source">仅演示版式，不代表业务数据。使用时同步替换数值、条长、刻度、无障碍说明及数据来源。</p></div>
-        <footer class="foot"><span>Ledger / 数据简报 · 示例内容，请替换</span><span class="page">02 / 04</span></footer>
+        <footer class="foot"><span>Ledger / 数据简报 · 示例内容，请替换</span><span class="page">02 / 05</span></footer>
+      </article>
+
+      <article class="slide" data-title="Ledger / 数据简报 · 两期变化">
+        <header class="head"><span class="eyebrow">LEDGER / 03</span><span class="tag">两期变化</span></header>
+        <div class="body"><p class="kicker">02 / Compare two observations</p><h2>看清变化，也保留口径。</h2><svg class="slope-chart" viewBox="0 0 1600 430" role="img" aria-label="虚构样例两期分数比较，统一零至100分。样例甲由20分升至40分，样例乙由60分降至50分。连线仅连接端点，不表示中间过程。">
+<g fill="none" stroke="#ccd6e2" stroke-width="2"><path d="M180 70H1410 M180 230H1410 M180 390H1410"/></g>
+<g fill="#55677b" font-size="26"><text x="60" y="80">100 分</text><text x="75" y="240">50</text><text x="90" y="400">0</text></g>
+<g fill="#172c45" font-size="28" text-anchor="middle"><text x="400" y="34">时点一 / 示例</text><text x="1150" y="34">时点二 / 示例</text></g>
+<path d="M400 326L1150 262" stroke="#1d5cac" stroke-width="5" fill="none"/>
+<path d="M400 198L1150 230" stroke="#627386" stroke-width="5" stroke-dasharray="12 9" fill="none"/>
+<g fill="#1d5cac"><circle cx="400" cy="326" r="8"/><circle cx="1150" cy="262" r="8"/></g>
+<g fill="#627386"><circle cx="400" cy="198" r="8"/><circle cx="1150" cy="230" r="8"/></g>
+<g font-size="27"><text x="365" y="336" text-anchor="end" fill="#1d5cac">甲 20</text><text x="1185" y="278" fill="#1d5cac">甲 40</text><text x="365" y="208" text-anchor="end" fill="#42576d">乙 60</text><text x="1185" y="220" fill="#42576d">乙 50</text></g></svg><p class="source">虚构样例 · 分数，统一刻度 0–100。甲 20 → 40，乙 60 → 50。<br>连线只连接两次观察，不表示中间趋势；使用时替换日期、坐标、说明与真实来源。</p></div>
+        <footer class="foot"><span>Ledger / 数据简报 · 示例内容，请替换</span><span class="page">03 / 05</span></footer>
       </article>
 
       <article class="slide" data-title="Ledger / 数据简报 · 解释与行动">
-        <header class="head"><span class="eyebrow">LEDGER / 03</span><span class="tag">解释与行动</span></header>
-        <div class="body"><p class="kicker">02 / Separate fact from interpretation</p><h2>把事实、解释和行动分开。</h2><table class="evidence-table"><thead><tr><th scope="col">事实</th><th scope="col">可能解释</th><th scope="col">验证动作</th></tr></thead><tbody><tr><td>填入实际变化</td><td>列出待核实原因</td><td>说明需要的证据</td></tr><tr><td>注明时间与口径</td><td>保留不确定性</td><td>约定下一次检查</td></tr></tbody></table><p class="source">来源占位：数据表 / 查询 / 更新日期。请替换为可追溯的实际来源。</p></div>
-        <footer class="foot"><span>Ledger / 数据简报 · 示例内容，请替换</span><span class="page">03 / 04</span></footer>
+        <header class="head"><span class="eyebrow">LEDGER / 04</span><span class="tag">解释与行动</span></header>
+        <div class="body"><p class="kicker">03 / Separate fact from interpretation</p><h2>把事实、解释和行动分开。</h2><table class="evidence-table"><thead><tr><th scope="col">事实</th><th scope="col">可能解释</th><th scope="col">验证动作</th></tr></thead><tbody><tr><td>填入实际变化</td><td>列出待核实原因</td><td>说明需要的证据</td></tr><tr><td>注明时间与口径</td><td>保留不确定性</td><td>约定下一次检查</td></tr></tbody></table><p class="source">来源占位：数据表 / 查询 / 更新日期。请替换为可追溯的实际来源。</p></div>
+        <footer class="foot"><span>Ledger / 数据简报 · 示例内容，请替换</span><span class="page">04 / 05</span></footer>
       </article>
 
       <article class="slide" data-title="Ledger / 数据简报 · 决策结尾">
-        <header class="head"><span class="eyebrow">LEDGER / 04</span><span class="tag">决策结尾</span></header>
+        <header class="head"><span class="eyebrow">LEDGER / 05</span><span class="tag">决策结尾</span></header>
         <div class="body"><p class="kicker">Decision / Next check</p><h1>让结论，<br>经得起回看。</h1><div class="decision"><p class="copy">写下建议、依据和停止条件。<br>约定何时用新的证据重新判断。</p></div></div>
-        <footer class="foot"><span>Ledger / 数据简报 · 示例内容，请替换</span><span class="page">04 / 04</span></footer>
+        <footer class="foot"><span>Ledger / 数据简报 · 示例内容，请替换</span><span class="page">05 / 05</span></footer>
       </article>
     </section>
   </main>
 
   <nav class="controls" aria-label="Slide controls">
     <button id="prev" type="button" aria-label="Previous slide">←</button>
-    <span class="counter" id="counter" aria-live="polite">1 / 4</span>
+    <span class="counter" id="counter" aria-live="polite">1 / 5</span>
     <button id="next" type="button" aria-label="Next slide">→</button>
   </nav>
 

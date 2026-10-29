@@ -104,7 +104,7 @@
     "category": "business",
     "use": "数据汇报 · 经营讨论 · 决策",
     "description": "统一刻度、清楚来源，把事实与解释分开。",
-    "layouts": "封面 / 图表 / 证据 / 决策",
+    "layouts": "封面 / 条形图 / 两期变化 / 证据 / 决策",
     "tone": "light"
   },
   {

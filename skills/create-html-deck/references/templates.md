@@ -1,6 +1,6 @@
 # Template collection
 
-For a new deck, choose by audience and content, then copy the selected HTML. Each file is a self-contained, four-slide starting point with inline CSS/JS and system fonts. Open `assets/templates/index.html` for visual previews. The original `assets/deck-template.html` remains the minimal two-slide starter.
+For a new deck, choose by audience and content, then copy the selected HTML. Each file is a self-contained starting point (Ledger has five slides; the other templates have four) with inline CSS/JS and system fonts. Open `assets/templates/index.html` for visual previews. The original `assets/deck-template.html` remains the minimal two-slide starter.
 
 | Template | Good fit | Compositions | Main adjustments |
 |---|---|---|---|
@@ -15,7 +15,7 @@ For a new deck, choose by audience and content, then copy the selected HTML. Eac
 | `assets/templates/console.html` | Code walkthroughs, engineering changes | Terminal cover, pseudocode, diff, verification | Monospace, amber, dark neutral surfaces |
 | `assets/templates/monograph.html` | Portfolios, brand studies, ideas | Type-led cover, exhibit, statement, closing | Black/white, generous whitespace, large type |
 | `assets/templates/workshop.html` | Workshops, retrospectives, team sessions | Sticky-note cover, observations, action worksheet, closing | Dotted board, soft yellow/blue/pink notes |
-| `assets/templates/ledger.html` | Data briefs, business reviews | Report cover, sample bar chart, evidence table, decision | Cool neutrals, blue bars, visible scope/source notes |
+| `assets/templates/ledger.html` | Data briefs, business reviews | Report cover, sample bar chart, two-period slope chart, evidence table, decision | Cool neutrals, blue bars, visible scope/source notes |
 | `assets/templates/dispatch.html` | Weekly updates, editorial narratives | Masthead, three columns, editorial statement, follow-up | Newsprint, serif type, double rules |
 | `assets/templates/passage.html` | Milestone reviews, roadmaps, project history | Station cover, stage map, decision record, checkpoint | Warm paper, route markers, explicit status labels |
 | `assets/templates/cabinet.html` | Product series, collections, design reviews | Series cover, collection cards, detail/specifications, review | Cool gallery surfaces, original CSS forms, consistent captions |
@@ -39,7 +39,9 @@ For code walkthroughs, keep the code and its explanation visible together. Dupli
 
 Replace all sample content, including document/slide titles, headers, footers, and labels. The statement in Editorial is original sample copy, not an attributed quotation. The workflow and portfolio panels are placeholders, not evidence of real results. Replace decorative CSS art with actual project evidence when appropriate. Keep footer content clear of the fixed controls.
 
-Ledger contains explicitly fictional example values (12, 18, 24) on a zero-based 0–24 scale. When replacing them, update bar widths, tick labels, units, accessible chart description, and source text together. Workshop is a presentation layout, not a collaborative or draggable whiteboard.
+Ledger contains explicitly fictional example values (12, 18, 24) on a zero-based 0–24 scale. When replacing them, update bar widths, tick labels, units, accessible chart description, and source text together. The slope chart uses fictional scores: A 20→40 and B 60→50 on a shared 0–100 scale. Its SVG uses `y = 390 - 3.2 × score`; update both endpoint coordinates, all value labels, date labels, the accessible description, scale, and source note together. Solid/dashed lines and direct labels distinguish the series without relying on color. Connections show only two observations, not the path between them. If intermediate changes are essential, use a time-series chart instead.
+
+Workshop is a presentation layout, not a collaborative or draggable whiteboard.
 
 Passage uses equally spaced stages, not a proportional time axis or progress meter. Replace sample status words and marker classes (`done`, `current`, or neither) together; retain text labels so status does not depend on color. Replace dates, evidence, owners, and checkpoint criteria with actual project content.
 
@@ -63,7 +65,7 @@ Add the standalone HTML and its metadata in `assets/templates/catalog.json`, the
 python3 <skill-dir>/scripts/build_gallery.py
 ```
 
-The gallery is static HTML with a small inline filter controller. It works from `file://` without fetching the catalog. The catalog is only an authoring input. Generate a cover screenshot under `assets/templates/previews/<slug>.png` before publishing gallery changes.
+The gallery is static HTML with a small inline filter controller. It works from `file://` without fetching the catalog. The catalog is only an authoring input. The gallery builder derives each sample page count from its HTML slide elements rather than assuming four pages. Generate a cover screenshot under `assets/templates/previews/<slug>.png` before publishing gallery changes.
 
 For collection-wide browser verification, `scripts/verify_templates.mjs` exports `verifyTemplates(task, options)` for an existing ego-browser TaskSpace. Read the installed ego-browser guide first; the caller owns the TaskSpace lifecycle and local HTTP server. Serve the repository root, then import the verifier in an ego-browser script:
 
