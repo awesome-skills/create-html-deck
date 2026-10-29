@@ -77,7 +77,7 @@
     "category": "technical",
     "use": "代码讲解 · 变更说明",
     "description": "终端提示符、伪代码和改动前后的对照。",
-    "layouts": "开场 / 代码 / 对照 / 验收",
+    "layouts": "开场 / 代码 / 对照 / 验收 / 速查",
     "tone": "dark"
   },
   {

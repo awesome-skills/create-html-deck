@@ -162,6 +162,12 @@
     pre { margin: 28px 0 0; white-space: pre-wrap; font: 30px/1.8 ui-monospace,"PingFang SC",monospace; }
     .diff { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }.diff section { border: 1px solid #5e695a; padding: 36px; }.diff h3 { font-size: 30px; }.minus { color: #f4b2a8; }.plus { color: #bde4a8; }
     .check-row { display: grid; grid-template-columns: 90px 1fr; align-items: baseline; border-bottom: 1px solid #687366; padding: 26px 0; }.check-row b { color: #bde4a8; font-size: 38px; }.check-row p { font-size: 34px; }
+    .reference-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+    .reference-grid h3 { font-size: 28px; color: #f2be6a; margin-bottom: 18px; }
+    .reference-grid dl { margin: 0; }
+    .reference-grid dl > div { display: grid; grid-template-columns: 190px 1fr; gap: 24px; padding: 24px 0; border-top: 1px solid #687366; }
+    .reference-grid dt { font-size: 30px; font-weight: 700; color: #bde4a8; }
+    .reference-grid dd { margin: 0; font-size: 28px; line-height: 1.5; }
   </style>
 </head>
 <body>
@@ -170,7 +176,7 @@
       <article class="slide active" data-title="Console / 开发者手记 · 技术开场">
         <header class="head"><span class="eyebrow">CONSOLE / 01</span><span class="tag">技术开场</span></header>
         <div class="body"><p class="prompt">~/notes $ open talk</p><h1>读懂过程，<br>再相信结果。<span class="cursor" aria-hidden="true"></span></h1><p class="lead">一次从输入到验证的开发者分享。</p><p class="note">CONSOLE / ENGINEERING NOTES</p></div>
-        <footer class="foot"><span>Console / 开发者手记 · 示例内容，请替换</span><span class="page">01 / 04</span></footer>
+        <footer class="foot"><span>Console / 开发者手记 · 示例内容，请替换</span><span class="page">01 / 05</span></footer>
       </article>
 
       <article class="slide" data-title="Console / 开发者手记 · 代码讲解">
@@ -180,26 +186,44 @@ steps  = 整理过程
 output = 生成结果
 
 <span class="plus">check</span>(output, criteria)</pre></div></div></div>
-        <footer class="foot"><span>Console / 开发者手记 · 示例内容，请替换</span><span class="page">02 / 04</span></footer>
+        <footer class="foot"><span>Console / 开发者手记 · 示例内容，请替换</span><span class="page">02 / 05</span></footer>
       </article>
 
       <article class="slide" data-title="Console / 开发者手记 · 变更说明">
         <header class="head"><span class="eyebrow">CONSOLE / 03</span><span class="tag">变更说明</span></header>
         <div class="body"><p class="kicker accent">02 / What changed</p><h2>把改动与原因放在一起。</h2><div class="diff"><section><h3 class="minus">− 原来的行为</h3><p class="copy">在此描述触发条件与原有结果。</p></section><section><h3 class="plus">+ 现在的行为</h3><p class="copy">在此描述修复后的结果与验证方式。</p></section></div><p class="note">对照示例 · 请使用实际代码或行为替换</p></div>
-        <footer class="foot"><span>Console / 开发者手记 · 示例内容，请替换</span><span class="page">03 / 04</span></footer>
+        <footer class="foot"><span>Console / 开发者手记 · 示例内容，请替换</span><span class="page">03 / 05</span></footer>
       </article>
 
       <article class="slide" data-title="Console / 开发者手记 · 验收">
         <header class="head"><span class="eyebrow">CONSOLE / 04</span><span class="tag">验收</span></header>
         <div class="body"><p class="prompt">~/notes $ verify</p><h2>让结果可以复查。</h2><div><section class="check-row"><b>01</b><p>列出实际运行的检查。</p></section><section class="check-row"><b>02</b><p>说明覆盖范围与未验证项。</p></section><section class="check-row"><b>03</b><p>留下可复现的入口。</p></section></div></div>
-        <footer class="foot"><span>Console / 开发者手记 · 示例内容，请替换</span><span class="page">04 / 04</span></footer>
+        <footer class="foot"><span>Console / 开发者手记 · 示例内容，请替换</span><span class="page">04 / 05</span></footer>
+      </article>
+      <article class="slide" data-title="Console / 开发者手记 · 术语速查">
+        <header class="head"><span class="eyebrow">CONSOLE / 05</span><span class="tag">术语速查</span></header>
+        <div class="body"><p class="kicker accent">04 / Keep for reference</p><h2>把关键术语留在一页。</h2>
+          <div class="reference-grid">
+            <section><h3>01 / 读懂流程</h3><dl>
+              <div><dt>input</dt><dd>进入流程的材料与条件。</dd></div>
+              <div><dt>output</dt><dd>流程产出的结果或文件。</dd></div>
+              <div><dt>criteria</dt><dd>判断结果是否满足要求的标准。</dd></div>
+            </dl></section>
+            <section><h3>02 / 复查结果</h3><dl>
+              <div><dt>check</dt><dd>按照标准执行的一次检查。</dd></div>
+              <div><dt>evidence</dt><dd>支持判断的记录或可复现结果。</dd></div>
+              <div><dt>scope</dt><dd>本次检查覆盖的条件与范围。</dd></div>
+            </dl></section>
+          </div><p class="note">伪代码术语示例，不是可执行命令 · 请替换为本次分享的术语、定义及文档版本。</p>
+        </div>
+        <footer class="foot"><span>Console / 开发者手记 · 示例内容，请替换</span><span class="page">05 / 05</span></footer>
       </article>
     </section>
   </main>
 
   <nav class="controls" aria-label="Slide controls">
     <button id="prev" type="button" aria-label="Previous slide">←</button>
-    <span class="counter" id="counter" aria-live="polite">1 / 4</span>
+    <span class="counter" id="counter" aria-live="polite">1 / 5</span>
     <button id="next" type="button" aria-label="Next slide">→</button>
   </nav>
 

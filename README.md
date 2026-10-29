@@ -74,7 +74,7 @@ Skill 会优先读取现有笔记、截图、spec、handoff 和已有 Deck；材
 
 ## 模板画廊
 
-[打开本地画廊](skills/create-html-deck/assets/templates/index.html)（下载后用浏览器打开），现有 16 套，共 65 页可播放示例（Ledger 五页，其余每套四页），复制单个 HTML 即可开始，无需安装依赖。
+[打开本地画廊](skills/create-html-deck/assets/templates/index.html)（下载后用浏览器打开），现有 16 套，共 66 页可播放示例（Console 和 Ledger 各五页，其余每套四页），复制单个 HTML 即可开始，无需安装依赖。
 
 | 模板 | 预览 | 适合场景 |
 |---|---|---|
