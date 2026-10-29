@@ -47,3 +47,15 @@ Reviewed 2026-10-29. This is a design-source notebook, not a ranking or a claim 
 ## Next research directions
 
 Look beyond presentation engines for open-source editorial, documentation, portfolio, and data-report layouts. Favor a clear content role that the current collection lacks, and retain source links and the observed reason for adopting or declining each direction. Validate new local implementations independently of upstream screenshots.
+
+## Candidate queue — README reviewed, implementation deferred
+
+These candidates were discovered after the first 13 templates. Reading their README is not proof of build quality, visual correctness, or every advertised capability.
+
+| Candidate | Evidence read | What to inspect next | Scope decision |
+|---|---|---|---|
+| [Tahta](https://github.com/zcag/tahta) | README describes a token-based layout library and variants; links a live explorer | Compare its timeline, feature, and showcase compositions in the actual explorer | Look for a missing composition; do not import the design-system runtime |
+| [Crimson Deck / noninsurance](https://github.com/alili/slidev-theme-noninsurance) | README documents a 1920×1080 canvas and timeline/code/chart layouts | Inspect timeline and code-plus-explanation screenshots, then check source structure | Potential milestone-story direction; avoid another generic dark recolor |
+| [Takahashi](https://github.com/kecrily/slidev-theme-takahashi) | README exposes default/reverse layouts and screenshot links | Inspect large-type pacing and contrast in the screenshots | Potential lightning-talk template with intentionally very little text |
+| [Bento](https://github.com/nyblnet/bento) | README describes single-file decks and links its gallery | Inspect designed gallery examples for useful compositions | Editor, collaboration, and self-updates are outside this template expansion |
+| [CushLabs Scrollytelling](https://github.com/RCushmaniii/cushlabs-scrollytelling) | README describes scroll-driven narration and presentation/browse modes | Examine narrative pacing only if it offers a useful fixed-slide translation | Do not add scroll locking, audio autoplay, or a second presentation engine |
