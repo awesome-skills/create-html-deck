@@ -218,3 +218,10 @@ This resolves the data-only ambiguity: the upstream design is a selectable detai
 - [CURC accessible presentation template](https://github.com/ResearchComputing/accessible_presentation_template): prior-pass README and tree inspection found only a PowerPoint file and a short accessibility-intent statement. The presentation itself was not opened. Accessibility conformance, visual layouts, and reuse permission are therefore unverified; the repository name is not evidence of any of them. Defer direct reuse rather than infer a new HTML composition from metadata.
 
 The collection remains 16 templates / 66 pages. These are screening records only; bundled HTML, previews, catalog, and prior browser-validation evidence are unchanged.
+
+
+## Cinematic topic cards — 2026-10-30
+
+Read [Gemini's README](https://github.com/leochiu-a/slidev-theme-gemini), repository tree, layout documentation, package metadata, and complete [`topics.vue`](https://github.com/leochiu-a/slidev-theme-gemini/blob/main/packages/slidev-theme-gemini/layouts/topics.vue). The topic grid pairs each title/description with an audience label and optional emphasis badge. This is a useful content-selection cue, but the inspected composition remains a two-column card grid; it does not establish a distinct presentation purpose beyond the existing collection. The component initializes its reveal state to true, so the inspected click handler is not evidence of a hidden-answer exercise. Motion timing and rendering were not tested.
+
+Package metadata declares MIT; no license file appeared in the inspected recursive tree. Exact license text, demo-image rights, and the configured Space Grotesk/IBM Plex Mono font files were not checked. No source, fonts, demo content, or assets were copied or installed. Defer a new theme: cinematic effects and audience badges alone do not justify one. The demo URL is documented upstream but was not opened in this pass; no screenshot or browser-validation claim is made.
