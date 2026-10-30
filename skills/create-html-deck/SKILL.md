@@ -17,7 +17,7 @@ Build a complete local HTML presentation with a fixed 1920×1080 design canvas, 
 
 ## Choose the path
 
-- For a new deck, copy `assets/deck-template.html` into the requested output location and replace its sample content.
+- For a new deck, read `references/templates.md` to choose a bundled visual system by audience and content. Preview `assets/templates/index.html`, then copy the selected standalone HTML and replace its sample content. Use `assets/deck-template.html` when a minimal starting point is preferable.
 - For an existing deck, inspect its HTML, CSS, JavaScript, images, and current screenshots before editing. Preserve its visual language unless the user asks for a redesign.
 - If the user explicitly requires `.pptx`, use a PowerPoint-specific skill instead. Do not rename HTML to `.pptx`.
 
